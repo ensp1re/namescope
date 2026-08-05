@@ -2,7 +2,7 @@
   "schemaVersion": "aiviron-knowledge-manifest/v1alpha1",
   "generatedBy": "aiviron-knowledge-service/0.1.0",
   "generatedAt": "2026-08-05T19:27:50.030Z",
-  "updatedAt": "2026-08-05T20:28:40.685Z",
+  "updatedAt": "2026-08-05T20:38:12.447Z",
   "projectId": "prj_31fcd3a110648fe720b077da",
   "docsRoot": "docs/ai",
   "documents": [
@@ -196,7 +196,7 @@
         },
         {
           "path": "README.md",
-          "digest": "sha256:184e76b6e7fbc6358597b489697967a492098c12e50c3da6aa8af6952c43e494"
+          "digest": "sha256:6d46b91b18c626e2c4f5d94afa8d3e713e5a5665c1c48220027029f32adc8f36"
         }
       ]
     },
@@ -304,7 +304,7 @@
         },
         {
           "path": "README.md",
-          "digest": "sha256:184e76b6e7fbc6358597b489697967a492098c12e50c3da6aa8af6952c43e494"
+          "digest": "sha256:6d46b91b18c626e2c4f5d94afa8d3e713e5a5665c1c48220027029f32adc8f36"
         },
         {
           "path": "SECURITY.md",
@@ -364,7 +364,7 @@
         },
         {
           "path": "README.md",
-          "digest": "sha256:184e76b6e7fbc6358597b489697967a492098c12e50c3da6aa8af6952c43e494"
+          "digest": "sha256:6d46b91b18c626e2c4f5d94afa8d3e713e5a5665c1c48220027029f32adc8f36"
         },
         {
           "path": "packages/cli/README.md",
@@ -422,7 +422,7 @@
         },
         {
           "path": "README.md",
-          "digest": "sha256:184e76b6e7fbc6358597b489697967a492098c12e50c3da6aa8af6952c43e494"
+          "digest": "sha256:6d46b91b18c626e2c4f5d94afa8d3e713e5a5665c1c48220027029f32adc8f36"
         },
         {
           "path": "packages/cli/README.md",
