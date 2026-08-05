@@ -24,10 +24,14 @@ const STOP_WORDS = new Set([
   "of", "on", "or", "that", "the", "this", "to", "with", "tool", "software",
 ]);
 const NEGATIVE_WORDS = ["dead", "kill", "hate", "fraud", "scam", "malware", "virus", "toxic"];
+const GENERIC_CONCEPTS = new Set([
+  "app", "application", "developer", "developers", "fast", "first", "free", "local", "modern",
+  "open", "platform", "project", "service", "simple", "source", "system",
+]);
 
 const SYNONYMS: Record<string, string[]> = {
   fast: ["swift", "rapid", "dash"],
-  local: ["near", "home", "native"],
+  local: ["local", "native", "home", "near"],
   open: ["open", "free", "commons"],
   source: ["forge", "code", "craft"],
   task: ["task", "work", "todo"],
@@ -35,11 +39,19 @@ const SYNONYMS: Record<string, string[]> = {
   database: ["data", "store", "base"],
   migration: ["shift", "move", "bridge"],
   developer: ["dev", "code", "hack"],
+  developers: ["dev", "code", "hack"],
   team: ["crew", "squad", "mesh"],
   queue: ["queue", "flow", "line"],
   job: ["job", "task", "work"],
   secure: ["guard", "safe", "lock"],
   monitor: ["watch", "scope", "pulse"],
+  name: ["name", "tag", "alias", "label", "identity", "moniker"],
+  names: ["name", "tag", "alias", "label", "identity", "moniker"],
+  naming: ["name", "tag", "alias", "label", "identity", "moniker"],
+  intelligence: ["signal", "insight", "radar", "sense", "scope"],
+  validate: ["check", "verify", "proof", "guard", "lint"],
+  validation: ["check", "verify", "proof", "guard", "lint"],
+  validator: ["check", "verify", "proof", "guard", "lint"],
 };
 
 const STYLE_WORDS: Record<string, { prefixes: string[]; suffixes: string[] }> = {
@@ -92,39 +104,87 @@ export interface GenerateOptions {
   excludedWords?: string[] | undefined;
 }
 
+interface NamingConcept {
+  sourceWord: string;
+  terms: string[];
+  distinctive: boolean;
+  order: number;
+}
+
 export function generateNames(description: string, options: GenerateOptions = {}): GeneratedNames {
   if (!description.trim()) throw new Error("Project description must not be empty");
   const count = Math.max(1, Math.min(options.count ?? 12, 100));
   const styles = options.styles?.length ? options.styles : DEFAULT_STYLES;
   const excluded = new Set((options.excludedWords ?? []).map(normalizeName));
-  const source = [...new Set([...tokenizeDescription(description), ...(options.keywords ?? []).map((word) => word.toLowerCase())])];
-  const related = [...new Set(source.flatMap((word) => [word, ...(SYNONYMS[word] ?? [])]))].slice(0, 16);
-  const roots = related.length ? related : ["project", "code"];
+  const keywordWords = (options.keywords ?? []).flatMap((keyword) => keyword.toLowerCase().normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .split(/[^a-z0-9]+/)
+    .filter((word) => word.length > 2));
+  const keywordSet = new Set(keywordWords);
+  const source = [...new Set([...keywordWords, ...tokenizeDescription(description)])];
+  if (!source.length) source.push("project", "code");
+  const concepts: NamingConcept[] = source.map((sourceWord, order) => ({
+    sourceWord,
+    terms: [...new Set(SYNONYMS[sourceWord] ?? [sourceWord])],
+    distinctive: keywordSet.has(sourceWord) || !GENERIC_CONCEPTS.has(sourceWord),
+    order,
+  })).sort((left, right) => Number(right.distinctive) - Number(left.distinctive) || left.order - right.order);
+  const anchors = concepts.some((concept) => concept.distinctive)
+    ? concepts.filter((concept) => concept.distinctive)
+    : concepts;
   const candidates: Candidate[] = [];
   const seen = new Set<string>();
 
-  const add = (name: string, style: string, rationale: string, sourceWords: string[]): void => {
+  const add = (name: string, style: string, rationale: string, sourceWords: string[]): boolean => {
     const normalized = normalizeName(name);
-    if (normalized.length < 3 || normalized.length > 24 || seen.has(normalized)) return;
-    if ([...excluded].some((word) => word && normalized.includes(word))) return;
+    if (normalized.length < 3 || normalized.length > 24 || seen.has(normalized)) return false;
+    if ([...excluded].some((word) => word && normalized.includes(word))) return false;
     seen.add(normalized);
     candidates.push({ name, style, rationale, sourceWords });
+    return true;
   };
+
+  // Pair distinct project concepts before adding generic style vocabulary. This keeps
+  // modifiers such as "local-first" from outranking the product's actual purpose.
+  let semanticIndex = 0;
+  const semanticPairs: Array<[NamingConcept, NamingConcept]> = [];
+  for (let leftIndex = 0; leftIndex < anchors.length; leftIndex += 1) {
+    for (let rightIndex = leftIndex + 1; rightIndex < anchors.length; rightIndex += 1) {
+      semanticPairs.push([anchors[leftIndex]!, anchors[rightIndex]!]);
+    }
+  }
+  if (!semanticPairs.length && anchors.length === 1) {
+    for (const companion of concepts) {
+      if (companion !== anchors[0]) semanticPairs.push([anchors[0]!, companion]);
+    }
+  }
+
+  for (const [leftConcept, rightConcept] of semanticPairs) {
+    for (const left of leftConcept.terms) {
+      for (const right of rightConcept.terms) {
+        if (candidates.length >= count) break;
+        const style = styles[semanticIndex % styles.length]!;
+        if (add(
+          `${title(left)}${title(right)}`,
+          style,
+          `Combines “${left}” from “${leftConcept.sourceWord}” with “${right}” from “${rightConcept.sourceWord}”.`,
+          [left, right],
+        )) semanticIndex += 1;
+      }
+      if (candidates.length >= count) break;
+    }
+    if (candidates.length >= count) break;
+  }
 
   for (const style of styles) {
     const vocabulary = STYLE_WORDS[style] ?? STYLE_WORDS["developer-tool"]!;
-    for (let index = 0; index < roots.length && candidates.length < count * 3; index += 1) {
+    const roots = (anchors.length ? anchors : concepts).flatMap((concept) => concept.terms);
+    for (let index = 0; index < roots.length && candidates.length < count; index += 1) {
       const left = roots[index]!;
-      const right = roots[(index + 1) % roots.length]!;
-      add(`${title(left)}${title(right)}`, style, `Combines project concepts “${left}” and “${right}”.`, [left, right]);
       const suffix = vocabulary.suffixes[index % vocabulary.suffixes.length]!;
       add(`${title(left)}${title(suffix)}`, style, `Pairs “${left}” with ${style} suffix “${suffix}”.`, [left, suffix]);
       const prefix = vocabulary.prefixes[index % vocabulary.prefixes.length]!;
       add(`${title(prefix)}${title(left)}`, style, `Pairs ${style} prefix “${prefix}” with “${left}”.`, [prefix, left]);
-      if (left.length > 3 && right.length > 3) {
-        const blend = `${left.slice(0, Math.ceil(left.length / 2))}${right.slice(Math.floor(right.length / 2))}`;
-        add(title(blend), "invented", `Blends parts of “${left}” and “${right}”.`, [left, right]);
-      }
     }
   }
 
