@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { pathToFileURL } from "node:url";
+import { realpathSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { createDefaultAdapters } from "@nametagged/adapters";
 import { JsonCache, NamingIntelligence, loadConfig, type CheckOptions, type GenerateOptions } from "@nametagged/core";
 import type { CompletedResult, ProviderResult } from "@nametagged/schemas";
@@ -237,8 +238,16 @@ process.stdout.on("error", (error: NodeJS.ErrnoException) => {
   throw error;
 });
 
-const executedPath = process.argv[1] ? pathToFileURL(process.argv[1]).href : "";
-if (import.meta.url === executedPath) {
+export function isExecutedDirectly(moduleUrl: string, argvEntry: string | undefined): boolean {
+  if (!argvEntry) return false;
+  try {
+    return realpathSync(fileURLToPath(moduleUrl)) === realpathSync(argvEntry);
+  } catch {
+    return false;
+  }
+}
+
+if (isExecutedDirectly(import.meta.url, process.argv[1])) {
   main().catch((error: unknown) => {
     const message = error instanceof Error ? error.message : "Unknown error";
     process.stderr.write(`nametagged: ${message}\n`);
