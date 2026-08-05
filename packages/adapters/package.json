@@ -16,6 +16,7 @@
   "publishConfig": { "access": "public" },
   "dependencies": {
     "@nametagged/core": "0.1.0",
-    "@nametagged/schemas": "0.1.0"
+    "@nametagged/schemas": "0.1.0",
+    "validate-npm-package-name": "^6.0.2"
   }
 }

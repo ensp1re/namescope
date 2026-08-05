@@ -2,8 +2,8 @@
   "schemaVersion": "aiviron-knowledge-manifest/v1alpha1",
   "generatedBy": "aiviron-knowledge-service/0.1.0",
   "generatedAt": "2026-08-05T19:27:50.030Z",
-  "updatedAt": "2026-08-05T19:41:29.073Z",
-  "projectId": "prj_18e47a133cd73b4a57dd6116",
+  "updatedAt": "2026-08-05T19:59:10.996Z",
+  "projectId": "prj_31fcd3a110648fe720b077da",
   "docsRoot": "docs/ai",
   "documents": [
     {
@@ -62,7 +62,7 @@
         },
         {
           "path": "packages/adapters/package.json",
-          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+          "digest": "sha256:85daa631be0f991ee2c869111508d67b0ac163f81cfac890cd09f1befb0b32cb"
         },
         {
           "path": "packages/cli/package.json",
@@ -82,23 +82,23 @@
         },
         {
           "path": "packages/adapters/src/index.ts",
-          "digest": "sha256:a327d9c76204ee9ff180e2f96b8d9cb6ace3bbe238f966611f93d90201c449d0"
+          "digest": "sha256:a921ebaabf2728f850167c48589d0a1a763a11ddccf5d666335c24ac20e0d657"
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:db40030125370911353a48836f1474fae719fe469819bd008fdaf258ac4138a9"
+          "digest": "sha256:ea39ce0f158df086a7f36a7011809ea7f4de7be2d146b99189d2989e124274f8"
         },
         {
           "path": "packages/core/src/index.ts",
-          "digest": "sha256:1d42a59c004056839d21302301ddb49d74efeeb27a0f9e1745de88062b9ed78f"
+          "digest": "sha256:ccf7389bee0f075dbfa97c62298c68b4ca4dbfbf4d89de86e14da5f60dc2843e"
         },
         {
           "path": "packages/mcp/src/index.ts",
-          "digest": "sha256:a35ed0ccbd9962b391bea9e97525a05561bdd99af7063d61d7745f2563e560b3"
+          "digest": "sha256:38065bedf38a99fc445003a2689fcad548b38a6f62feaac1efeab72beca05f8e"
         },
         {
           "path": "packages/schemas/src/index.ts",
-          "digest": "sha256:89a6add332b9a3282f2a0268c77f9c1ab4ea08e38f38d24392e0c853dee120fa"
+          "digest": "sha256:ed3748794c2aab382f26e261518c004be8c23b021e77ecc86c21090750fbad0f"
         }
       ]
     },
@@ -116,7 +116,7 @@
         },
         {
           "path": "package-lock.json",
-          "digest": "sha256:f3c9f21a13069e6e13a174894c5fff71912b458532828ea96970e558b82c06a4"
+          "digest": "sha256:61bf918b05bf73f46ff00d0c8dd1df5d1cfaf26ae572360d9158bc4739a9f94f"
         },
         {
           "path": "packages/cli/LICENSE",
@@ -132,7 +132,7 @@
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:db40030125370911353a48836f1474fae719fe469819bd008fdaf258ac4138a9"
+          "digest": "sha256:ea39ce0f158df086a7f36a7011809ea7f4de7be2d146b99189d2989e124274f8"
         },
         {
           "path": "packages/cli/tsconfig.json",
@@ -172,7 +172,7 @@
         },
         {
           "path": "docs/data-sources.md",
-          "digest": "sha256:a55de7ef532c959376536c3baa71f73ff8317da81d251fdc0dc86fd88b73ecad"
+          "digest": "sha256:af591f560ed37ddba3b0705c311eb3d0561caa278672284eca7260546c2be20c"
         },
         {
           "path": "docs/limitations.md",
@@ -192,11 +192,11 @@
         },
         {
           "path": "packages/adapters/src/index.ts",
-          "digest": "sha256:a327d9c76204ee9ff180e2f96b8d9cb6ace3bbe238f966611f93d90201c449d0"
+          "digest": "sha256:a921ebaabf2728f850167c48589d0a1a763a11ddccf5d666335c24ac20e0d657"
         },
         {
           "path": "README.md",
-          "digest": "sha256:9100951202d78a714b022fd770a743fd9b4aae7c92ea1f8eea8f523ae9c0f8e8"
+          "digest": "sha256:184e76b6e7fbc6358597b489697967a492098c12e50c3da6aa8af6952c43e494"
         }
       ]
     },
@@ -214,7 +214,7 @@
         },
         {
           "path": "packages/adapters/package.json",
-          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+          "digest": "sha256:85daa631be0f991ee2c869111508d67b0ac163f81cfac890cd09f1befb0b32cb"
         },
         {
           "path": "packages/cli/package.json",
@@ -251,6 +251,10 @@
         {
           "path": "tests/mcp.test.ts",
           "digest": "sha256:4c2bc37c6240d9d812065157375b969b44d7f17e73d65d2ee90fd20be864bfb2"
+        },
+        {
+          "path": "tests/npm-validation.test.ts",
+          "digest": "sha256:f2ab1a79e506cb32a776facd0b0196a895b22f882211e50b494e9bd43b60aa38"
         },
         {
           "path": "tests/offline.test.ts",
@@ -292,11 +296,11 @@
         },
         {
           "path": "docs/data-sources.md",
-          "digest": "sha256:a55de7ef532c959376536c3baa71f73ff8317da81d251fdc0dc86fd88b73ecad"
+          "digest": "sha256:af591f560ed37ddba3b0705c311eb3d0561caa278672284eca7260546c2be20c"
         },
         {
           "path": "README.md",
-          "digest": "sha256:9100951202d78a714b022fd770a743fd9b4aae7c92ea1f8eea8f523ae9c0f8e8"
+          "digest": "sha256:184e76b6e7fbc6358597b489697967a492098c12e50c3da6aa8af6952c43e494"
         },
         {
           "path": "SECURITY.md",
@@ -318,7 +322,7 @@
         },
         {
           "path": "packages/adapters/package.json",
-          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+          "digest": "sha256:85daa631be0f991ee2c869111508d67b0ac163f81cfac890cd09f1befb0b32cb"
         },
         {
           "path": "packages/cli/package.json",
@@ -356,7 +360,7 @@
         },
         {
           "path": "README.md",
-          "digest": "sha256:9100951202d78a714b022fd770a743fd9b4aae7c92ea1f8eea8f523ae9c0f8e8"
+          "digest": "sha256:184e76b6e7fbc6358597b489697967a492098c12e50c3da6aa8af6952c43e494"
         },
         {
           "path": "packages/cli/README.md",
@@ -368,7 +372,7 @@
         },
         {
           "path": "packages/adapters/package.json",
-          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+          "digest": "sha256:85daa631be0f991ee2c869111508d67b0ac163f81cfac890cd09f1befb0b32cb"
         },
         {
           "path": "packages/cli/package.json",
@@ -388,15 +392,15 @@
         },
         {
           "path": "packages/adapters/src/index.ts",
-          "digest": "sha256:a327d9c76204ee9ff180e2f96b8d9cb6ace3bbe238f966611f93d90201c449d0"
+          "digest": "sha256:a921ebaabf2728f850167c48589d0a1a763a11ddccf5d666335c24ac20e0d657"
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:db40030125370911353a48836f1474fae719fe469819bd008fdaf258ac4138a9"
+          "digest": "sha256:ea39ce0f158df086a7f36a7011809ea7f4de7be2d146b99189d2989e124274f8"
         },
         {
           "path": "packages/core/src/index.ts",
-          "digest": "sha256:1d42a59c004056839d21302301ddb49d74efeeb27a0f9e1745de88062b9ed78f"
+          "digest": "sha256:ccf7389bee0f075dbfa97c62298c68b4ca4dbfbf4d89de86e14da5f60dc2843e"
         }
       ]
     },
@@ -414,7 +418,7 @@
         },
         {
           "path": "README.md",
-          "digest": "sha256:9100951202d78a714b022fd770a743fd9b4aae7c92ea1f8eea8f523ae9c0f8e8"
+          "digest": "sha256:184e76b6e7fbc6358597b489697967a492098c12e50c3da6aa8af6952c43e494"
         },
         {
           "path": "packages/cli/README.md",
@@ -426,7 +430,7 @@
         },
         {
           "path": "packages/adapters/package.json",
-          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+          "digest": "sha256:85daa631be0f991ee2c869111508d67b0ac163f81cfac890cd09f1befb0b32cb"
         },
         {
           "path": "packages/cli/package.json",
@@ -465,6 +469,10 @@
         {
           "path": "tests/mcp.test.ts",
           "digest": "sha256:4c2bc37c6240d9d812065157375b969b44d7f17e73d65d2ee90fd20be864bfb2"
+        },
+        {
+          "path": "tests/npm-validation.test.ts",
+          "digest": "sha256:f2ab1a79e506cb32a776facd0b0196a895b22f882211e50b494e9bd43b60aa38"
         },
         {
           "path": "tests/offline.test.ts",

@@ -1,5 +1,16 @@
+import { createRequire } from "node:module";
 import { evidence, executableInPath, nameVariants, normalizeName, type AdapterSet, type CheckContext, createLimit } from "@nametagged/core";
 import type { ProviderResult, TrademarkScreening } from "@nametagged/schemas";
+
+interface NpmNameValidation {
+  validForNewPackages: boolean;
+  validForOldPackages: boolean;
+  errors?: string[] | undefined;
+  warnings?: string[] | undefined;
+}
+
+const validateNpmPackageName = createRequire(import.meta.url)("validate-npm-package-name") as (name: string) => NpmNameValidation;
+const NPM_NAME_RULES_SOURCE = "https://docs.npmjs.com/cli/v11/configuring-npm/package-json#name";
 
 interface HttpResult {
   status: number;
@@ -167,8 +178,36 @@ const REGISTRIES: Record<string, RegistryDefinition> = {
   },
 };
 
+function npmPackageCandidate(name: string): string {
+  const lowered = name.trim().toLowerCase();
+  return /^[a-z0-9@/._-]+$/.test(lowered) ? lowered : normalizeName(name);
+}
+
+function npmRegistryVariants(name: string, candidate: string): string[] {
+  if (candidate.startsWith("@")) return [candidate];
+  return [...new Set([candidate, ...nameVariants(name)])]
+    .filter((variant) => validateNpmPackageName(variant).validForNewPackages);
+}
+
 async function checkRegistry(name: string, registry: RegistryDefinition, context: CheckContext): Promise<ProviderResult> {
-  const variants = nameVariants(name);
+  const npmCandidate = registry.id === "npm" ? npmPackageCandidate(name) : undefined;
+  const npmValidation = npmCandidate ? validateNpmPackageName(npmCandidate) : undefined;
+  if (npmCandidate && npmValidation && !npmValidation.validForNewPackages) {
+    const problems = [...(npmValidation.errors ?? []), ...(npmValidation.warnings ?? [])];
+    const detail = problems.length ? problems.join("; ") : "npm rejected the package-name structure.";
+    return {
+      provider: "npm",
+      status: "invalid",
+      score: 0,
+      summary: `“${npmCandidate}” is not valid for a new npm package.`,
+      warnings: problems,
+      evidence: [evidence("npm", npmCandidate, "invalid", detail, "high", NPM_NAME_RULES_SOURCE)],
+    };
+  }
+  const structureEvidence = npmCandidate
+    ? evidence("npm", npmCandidate, "valid", `“${npmCandidate}” is structurally valid for a new npm package.`, "high", NPM_NAME_RULES_SOURCE)
+    : undefined;
+  const variants = npmCandidate ? npmRegistryVariants(name, npmCandidate) : nameVariants(name);
   const matches: string[] = [];
   const checked: string[] = [];
   try {
@@ -183,7 +222,10 @@ async function checkRegistry(name: string, registry: RegistryDefinition, context
           score: 50,
           summary: `${registry.label} collision status is unknown.`,
           warnings: [`${registry.label} returned HTTP ${response.status}; absence was not inferred.`],
-          evidence: [evidence(registry.id, variant, "unknown", `Registry returned HTTP ${response.status}.`, "none", registry.endpoint(variant))],
+          evidence: [
+            ...(structureEvidence ? [structureEvidence] : []),
+            evidence(registry.id, variant, "unknown", `Registry returned HTTP ${response.status}.`, "none", registry.endpoint(variant)),
+          ],
         };
       }
     }
@@ -195,7 +237,10 @@ async function checkRegistry(name: string, registry: RegistryDefinition, context
         score: exact ? 0 : 15,
         summary: `${registry.label} has ${exact ? "an exact or normalized" : "a separator-variant"} collision: ${matches.join(", ")}.`,
         warnings: exact ? [`Exact or normalized ${registry.label} package collision found.`] : [`Separator variation exists on ${registry.label}.`],
-        evidence: matches.map((match) => evidence(registry.id, match, "collision", `Package exists as “${match}”.`, "high", registry.packageUrl(match))),
+        evidence: [
+          ...(structureEvidence ? [structureEvidence] : []),
+          ...matches.map((match) => evidence(registry.id, match, "collision", `Package exists as “${match}”.`, "high", registry.packageUrl(match))),
+        ],
       };
     }
     return {
@@ -204,10 +249,15 @@ async function checkRegistry(name: string, registry: RegistryDefinition, context
       score: 100,
       summary: `No exact or common separator collision found on ${registry.label}.`,
       warnings: ["Registry state can change after this check."],
-      evidence: checked.map((variant) => evidence(registry.id, variant, "no_exact_collision", "Registry returned HTTP 404.", "high", registry.packageUrl(variant))),
+      evidence: [
+        ...(structureEvidence ? [structureEvidence] : []),
+        ...checked.map((variant) => evidence(registry.id, variant, "no_exact_collision", "Registry returned HTTP 404.", "high", registry.packageUrl(variant))),
+      ],
     };
   } catch (error) {
-    return errorResult(registry.id, normalizeName(name), error);
+    const result = errorResult(registry.id, normalizeName(name), error);
+    if (structureEvidence) result.evidence.unshift(structureEvidence);
+    return result;
   }
 }
 

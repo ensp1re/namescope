@@ -337,6 +337,7 @@ function statusScore(result: ProviderResult): number {
     registered: 20,
     collision: 0,
     likely_taken: 20,
+    invalid: 0,
     unknown: 50,
     unsupported: 50,
     error: 40,
@@ -431,7 +432,8 @@ export class NamingIntelligence {
       cli: { score: cliScore, status: cli.summary, weight: weights.cli, evidence: cli.evidence },
     };
     const rawScore = Object.entries(dimensions).reduce((sum, [key, dimension]) => sum + dimension.score * weights[key as keyof ScoringWeights], 0) / totalWeight;
-    const blocking = Boolean(trademark?.blocking) || packages.some((item) => item.status === "collision");
+    const invalidPackage = packages.some((item) => item.status === "invalid");
+    const blocking = Boolean(trademark?.blocking) || invalidPackage || packages.some((item) => item.status === "collision");
     const score = Math.round(blocking ? Math.min(rawScore, 59) : rawScore);
     const unknownChecks = providers.filter((item) => ["unknown", "unsupported", "error", "manual_verification_required"].includes(item.status)).map((item) => item.provider);
     if (!options.includeSocial) unknownChecks.push("social handles (not requested)");
@@ -443,7 +445,7 @@ export class NamingIntelligence {
       "Trademark screening is preliminary information, not legal clearance.",
       ...(trademark?.blocking ? ["Trademark screening found a potential blocking conflict."] : []),
     ])];
-    const verdict = blocking ? "blocked by conflict" : score >= 80 ? "strong candidate" : score >= 65 ? "promising candidate" : "high conflict risk";
+    const verdict = invalidPackage ? "invalid npm package name" : blocking ? "blocked by conflict" : score >= 80 ? "strong candidate" : score >= 65 ? "promising candidate" : "high conflict risk";
     const explanation = `${name} scores ${score}/100 (${verdict}). Package uniqueness ${packageScore}, GitHub uniqueness ${githubScore}, domain options ${domainScore}, name quality ${qualityScore}, search distinctiveness ${searchScore}, and CLI usability ${cliScore}. ${unknownChecks.length} check(s) remain unknown or unrequested.`;
     return {
       schemaVersion: RESULT_SCHEMA_VERSION,

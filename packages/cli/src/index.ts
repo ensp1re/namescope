@@ -75,7 +75,7 @@ function outputMode(args: ParsedArgs): OutputMode {
 }
 
 function statusMarker(status: string): string {
-  if (["registered", "collision", "likely_taken", "error"].includes(status)) return "[!]";
+  if (["registered", "collision", "likely_taken", "invalid", "error"].includes(status)) return "[!]";
   if (["available", "no_exact_collision"].includes(status)) return "[confirmed]";
   if (["likely_available"].includes(status)) return "[likely]";
   return "[?]";
@@ -115,7 +115,7 @@ function emit(value: unknown, mode: OutputMode): void {
   }
   if (Array.isArray(value)) {
     if (!value.length) process.stdout.write("No results.\n");
-    else if ("score" in (value[0] as object)) process.stdout.write(`${(value as CompletedResult[]).map((item, index) => `${index + 1}. ${renderReport(item)}`).join("\n\n")}\n`);
+    else if ("dimensions" in (value[0] as object)) process.stdout.write(`${(value as CompletedResult[]).map((item, index) => `${index + 1}. ${renderReport(item)}`).join("\n\n")}\n`);
     else process.stdout.write(`${renderProviders(value as ProviderResult[])}\n`);
     return;
   }

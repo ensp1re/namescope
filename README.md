@@ -25,7 +25,7 @@ No account, API key, subscription, wallet, payment, hosted backend, Docker insta
 
 - deterministic candidates from project words, related terms, compounds, affixes, and blends;
 - domains through public RDAP for `.com`, `.org`, `.net`, `.io`, `.dev`, `.app`, `.ai`, and `.co` by default;
-- exact, normalized, hyphen, and underscore collisions on npm, PyPI, and crates.io;
+- npm publishability through `validate-npm-package-name`, followed by exact, normalized, hyphen, and underscore collision checks on npm, PyPI, and crates.io;
 - GitHub repository search plus exact user or organization namespaces;
 - local `PATH`, common commands, language toolchains, and shell-reserved commands;
 - transparent quality signals and configurable ranking weights;

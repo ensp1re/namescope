@@ -96,7 +96,7 @@ export async function createNametaggedMcpServer(options: McpServerOptions = {}):
 
   server.registerTool("check_packages", {
     title: "Check package registries",
-    description: "Check exact, normalized, hyphen, and underscore collisions on npm, PyPI, and crates.io.",
+    description: "Validate npm publishability, then check exact, normalized, hyphen, and underscore collisions on npm, PyPI, and crates.io.",
     inputSchema: z.object({
       name: z.string().min(1),
       registries: z.array(z.enum(["npm", "pypi", "crates"])).default(config.registries),

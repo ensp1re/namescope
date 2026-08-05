@@ -20,6 +20,7 @@ Build, test, and repository commands were detected
 - `tests/fixtures/collisions.json`
 - `tests/generator.test.ts`
 - `tests/mcp.test.ts`
+- `tests/npm-validation.test.ts`
 - `tests/offline.test.ts`
 - `tests/scoring.test.ts`
 

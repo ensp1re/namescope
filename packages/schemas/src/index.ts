@@ -19,6 +19,7 @@ export const CheckStateSchema = z.enum([
   "collision",
   "likely_available",
   "likely_taken",
+  "invalid",
   "unknown",
   "unsupported",
   "error",
