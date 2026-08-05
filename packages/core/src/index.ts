@@ -486,8 +486,12 @@ function summarize(results: ProviderResult[]): string {
 }
 
 export function explainScore(result: CompletedResult): string {
+  const totalWeight = Object.values(result.dimensions).reduce((sum, dimension) => sum + dimension.weight, 0);
   const dimensions = Object.entries(result.dimensions)
-    .map(([name, value]) => `${name}: ${value.score}/100 at ${value.weight}% — ${value.status}`)
+    .map(([name, value]) => {
+      const share = totalWeight > 0 ? (value.weight / totalWeight) * 100 : 0;
+      return `${name}: ${value.score}/100 at ${share.toFixed(1)}% of composite weight — ${value.status}`;
+    })
     .join("\n");
   return `${result.name}: ${result.verdict} (${result.score}/100)\n${dimensions}\n\n${result.explanation}`;
 }

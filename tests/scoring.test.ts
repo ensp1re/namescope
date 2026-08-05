@@ -41,6 +41,22 @@ describe("quality and composite scoring", () => {
     assert.ok(report.warnings.some((warning) => warning.includes("Trademark")));
   });
 
+  it("accepts relative weights above 100 and explains their normalized shares", async () => {
+    const config = ConfigSchema.parse({
+      weights: { packages: 200, github: 100, domains: 0, quality: 0, search: 0, cli: 0 },
+    });
+    const intelligence = new NamingIntelligence(adapters, config, new JsonCache({ disabled: true }));
+    const report = await intelligence.checkName("TaskForge");
+
+    assert.doesNotThrow(() => CompletedResultSchema.parse(report));
+    assert.equal(report.dimensions.packages?.weight, 200);
+
+    const explanation = explainScore(report);
+    assert.match(explanation, /packages: .* at 66\.7% of composite weight/);
+    assert.match(explanation, /github: .* at 33\.3% of composite weight/);
+    assert.doesNotMatch(explanation, /200%/);
+  });
+
   it("blocks a package collision", async () => {
     const collisionAdapters: AdapterSet = {
       ...adapters,
