@@ -1,53 +1,133 @@
 # Nametagged
 
-Free, open-source project-naming intelligence for developers. Generate names locally, check public software namespaces, compare evidence, and run the same engine through an `npx` CLI or local MCP stdio server.
+Picking a project name is easy. Finding out whether that name is usable across package registries, GitHub, domains, and the command line is the tedious part.
 
-Nametagged targets software-project naming. It does not promise business-name availability, domain ownership, social-handle availability, or legal trademark clearance.
+Nametagged does that research from your terminal. Give it a project description or a shortlist of names and it returns a scored report with the evidence behind every result. Generation and scoring run locally; network checks use public provider endpoints.
+
+Nametagged is built for software projects. It cannot promise that a business name, domain, social handle, or trademark is legally available.
 
 ## Quick start
 
-Requires Node.js 24 LTS or newer.
+Nametagged requires Node.js 24 LTS or newer. You can run it without installing anything globally:
 
 ```bash
 npx nametagged find "a fast open-source database migration tool"
 npx nametagged check taskforge
 npx nametagged rank taskforge taskmint orbitdesk
-npx nametagged domains taskforge --tlds com,io,dev,app
-npx nametagged packages taskforge
-npx nametagged check taskforge --json
-npx nametagged check taskforge --offline
-npx nametagged mcp
 ```
 
-No account, API key, subscription, wallet, payment, hosted backend, Docker installation, or language model is required. `GITHUB_TOKEN` is optional and only raises GitHub API rate limits.
+No account, subscription, payment, hosted backend, Docker setup, or language model is required. A `GITHUB_TOKEN` is optional and only increases GitHub API rate limits.
 
-## What version 0.1 checks
+## How it works
 
-- deterministic candidates from project words, related terms, compounds, affixes, and blends;
-- domains through public RDAP for `.com`, `.org`, `.net`, `.io`, `.dev`, `.app`, `.ai`, and `.co` by default;
-- npm publishability through `validate-npm-package-name`, followed by exact, normalized, hyphen, and underscore collision checks on npm, PyPI, and crates.io;
-- GitHub repository search plus exact user or organization namespaces;
-- local `PATH`, common commands, language toolchains, and shell-reserved commands;
-- transparent quality signals and configurable ranking weights;
-- preliminary trademark search links with explicit legal limitations.
+`find` starts with a project description and generates deterministic candidates. `check` starts with one name, while `rank` compares several. All three eventually use the same checking and scoring engine.
 
-Timeouts, rate limits, blocked requests, unsupported sources, and malformed responses remain `unknown`, `unsupported`, or `error`. They are never converted to “available.”
+```mermaid
+flowchart TD
+    A["Project description or candidate names"] --> B{"Command"}
+    B -->|find| C["Generate candidates locally"]
+    B -->|check or rank| D["Use supplied names"]
+    C --> E["Normalize query variants"]
+    D --> E
 
-## Privacy
+    E --> F["Run local quality and CLI checks"]
+    E --> G{"Offline mode?"}
+    G -->|Yes| H["Skip remote requests and record unknowns"]
+    G -->|No| I["Query public providers in parallel"]
+    I --> J["RDAP, npm, PyPI, crates.io, and GitHub"]
 
-Generation and quality analysis run locally. Checks send only the requested candidate to providers needed for that command. `--offline` prevents every network request. Nametagged has no telemetry and does not collect names or descriptions. See [privacy documentation](docs/privacy.md).
+    F --> K["Collect evidence, confidence, and timestamps"]
+    H --> K
+    J --> K
+    K --> L["Add optional trademark links and disclaimer"]
+    L --> M["Calculate weighted dimension scores"]
+    M --> N{"Blocking conflict?"}
+    N -->|Yes| O["Cap or block the recommendation"]
+    N -->|No| P["Keep the composite score"]
+    O --> Q["Return human, JSON, Markdown, or MCP output"]
+    P --> Q
+```
 
-## Output
+Provider-specific commands such as `domains` and `packages` return their evidence directly instead of building a complete composite report.
 
-Human output distinguishes confirmed, likely, unknown, warning, and error states. Use `--json`, `--compact-json`, or `--markdown` for machine-readable and report output. Every completed report contains evidence, timestamps, confidence, warnings, unknown checks, dimensions, weights, and explanation.
+### 1. Generate or accept candidates
+
+Name generation is local and reproducible. Nametagged combines useful words from the description with related terms, compounds, prefixes, suffixes, and blends. Generated names are only ideas; they do not carry availability claims until checks run.
+
+### 2. Check public and local namespaces
+
+Nametagged checks each candidate against the sources relevant to software projects:
+
+| Area | What is checked | Important limitation |
+| --- | --- | --- |
+| Packages | npm name validity, then exact and separator variants on npm, PyPI, and crates.io | Registry state can change immediately |
+| GitHub | Repository-name search and exact user or organization namespace | Search is not proof of global availability |
+| Domains | Selected TLDs through public RDAP | A 404 is a useful signal, not a purchase guarantee |
+| CLI | Local `PATH`, common commands, language tools, and shell-reserved names | Results describe the current machine |
+| Name quality | Length, word count, pronunciation proxy, punctuation, numbers, ambiguity, and relevance | These are heuristics, not user research |
+| Trademark | Official manual-search links and a legal disclaimer when requested | This is not trademark clearance or legal advice |
+
+Search distinctiveness stays neutral until a search adapter exists. Social handles are not checked in version 0.1.
+
+### 3. Keep uncertainty visible
+
+A timeout, rate limit, blocked request, unsupported provider, or malformed response remains `unknown`, `unsupported`, or `error`. Nametagged never turns a failed lookup into “available.”
+
+Every completed report includes provider evidence, confidence, timestamps, warnings, unknown checks, dimension scores, weights, and a plain-language explanation.
+
+### 4. Score and rank
+
+The default score combines package uniqueness, GitHub uniqueness, domain options, deterministic name quality, search distinctiveness, and CLI usability. Weights are configurable and normalized by their actual sum, so they do not need to total 100.
+
+A package collision or another confirmed blocking conflict can cap or block a recommendation. A high score still means “strong candidate based on these checks,” not “safe everywhere.”
+
+## Commands
+
+| Command | Use it to |
+| --- | --- |
+| `nametagged find <description>` | Generate, check, and rank project-name ideas |
+| `nametagged check <name>` | Build a complete report for one name |
+| `nametagged rank <name...>` | Compare two or more existing candidates |
+| `nametagged domains <name>` | Check selected domain extensions only |
+| `nametagged packages <name>` | Check selected package registries only |
+| `nametagged mcp` | Start the local MCP stdio server |
+
+Useful examples:
+
+```bash
+# Check selected domains
+npx nametagged domains taskforge --tlds com,io,dev,app
+
+# Check selected package registries
+npx nametagged packages taskforge --registries npm,pypi,crates
+
+# Return structured output
+npx nametagged check taskforge --json
+
+# Prevent every network request
+npx nametagged check taskforge --offline
+
+# Include preliminary trademark resources
+npx nametagged check taskforge --include-trademark --nice-classes 9,42
+```
+
+Output formats are human-readable text, `--json`, `--compact-json`, and `--markdown`.
+
+## Privacy and offline use
+
+Generation, normalization, quality analysis, scoring, cache handling, and CLI collision checks run locally. Remote commands send only the requested candidate and query variant to the selected providers.
+
+Use `--offline` to prevent all network requests. Nametagged has no telemetry and does not collect project names or descriptions. Read the [privacy documentation](docs/privacy.md) for provider-by-provider details.
 
 ## Configuration
 
-Copy [`namecheck.config.example.json`](namecheck.config.example.json) to `namecheck.config.json`. CLI flags override file values.
+Copy [`namecheck.config.example.json`](namecheck.config.example.json) to `namecheck.config.json`. Use it to change TLDs, registries, scoring weights, timeouts, cache lifetime, concurrency, or excluded words. CLI flags override file values.
 
-## MCP clients
+See the [configuration guide](docs/configuration.md) and [scoring methodology](docs/methodology.md).
 
-Use stdio command `npx -y nametagged mcp`. Example client entry:
+## MCP setup
+
+Nametagged exposes the same engine through a local MCP stdio server:
 
 ```json
 {
@@ -60,23 +140,27 @@ Use stdio command `npx -y nametagged mcp`. Example client entry:
 }
 ```
 
-Available tools: `generate_names`, `check_name`, `rank_names`, `check_domains`, `check_packages`, `check_github`, `check_trademark`, and `explain_score`. See [MCP guide](docs/mcp.md).
+Available tools are `generate_names`, `check_name`, `rank_names`, `check_domains`, `check_packages`, `check_github`, `check_trademark`, and `explain_score`. Read the [MCP guide](docs/mcp.md) for details.
 
 ## Development
 
 ```bash
+git clone https://github.com/ensp1re/nametagged.git
+cd nametagged
 npm install
 npm run check
 npm run build
 node packages/cli/dist/index.js find "an open-source TypeScript job queue" --offline
 ```
 
-Architecture and decisions live in [`docs/`](docs/architecture.md). Contributions follow [`CONTRIBUTING.md`](CONTRIBUTING.md).
+The repository is an npm workspace split into schemas, core logic, provider adapters, MCP, and CLI packages. Read the [architecture guide](docs/architecture.md) for the dependency flow and [`CONTRIBUTING.md`](CONTRIBUTING.md) before sending a change.
 
-## Legal limitation
+## Know the limits
 
-Trademark results are preliminary informational screening and are not legal advice or a comprehensive clearance search. Consult a qualified trademark attorney before relying on a name for commercial use.
+Results are snapshots, and public namespaces can change at any time. RDAP behavior varies between registries, GitHub search is not exhaustive, local command checks vary by machine, and deterministic quality scores cannot replace research with real people.
+
+Trademark output is preliminary information, not legal advice or a comprehensive clearance search. Consult a qualified trademark attorney before relying on a name commercially. The full list lives in [limitations](docs/limitations.md).
 
 ## License
 
-MIT
+[MIT](LICENSE)
