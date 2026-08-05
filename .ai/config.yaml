@@ -1,0 +1,37 @@
+# Aiviron configuration; human-owned after generation
+apiVersion: dev.aiviron/v1alpha1
+kind: AgentEnvironment
+metadata:
+  projectId: "prj_18e47a133cd73b4a57dd6116"
+  name: "nametagged"
+spec:
+  mode: subscription-first
+  agents:
+    - "codex"
+    - "claude"
+  canonicalState: .ai
+  runtimeState: .ai/state
+  intelligence:
+    index: .ai/state/repository/index.sqlite
+    retrievalProfile: hybrid-frozen-v1
+  context:
+    defaultBudgetTokens: 2048
+    strategy: hybrid
+    scope: closed
+  knowledge:
+    docsRoot: docs/ai
+    manifest: .ai/knowledge/manifest.json
+    adaptive: true
+  continuation:
+    packet: .ai/state/continuation/latest.md
+    defaultBudgetTokens: 4096
+    automaticCheckpoint: interactive-cli-exit
+  providerApi:
+    required: false
+    enabled: false
+  sessions:
+    handoff: operational-capsule
+    writerLease: one-agent-per-worktree
+  privacy:
+    transferProviderTranscript: false
+    transferHiddenReasoning: false
