@@ -86,7 +86,7 @@
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:1ef9a512d434495ca2fc9e35321ff876bff7cda99f9f0bbd6180e168726676a4"
+          "digest": "sha256:66add4078229bd30ff431acd3bcef930fdd8680ad0bcec763352e3fb78c74305"
         },
         {
           "path": "packages/core/src/index.ts",
@@ -132,7 +132,7 @@
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:1ef9a512d434495ca2fc9e35321ff876bff7cda99f9f0bbd6180e168726676a4"
+          "digest": "sha256:66add4078229bd30ff431acd3bcef930fdd8680ad0bcec763352e3fb78c74305"
         },
         {
           "path": "packages/cli/tsconfig.json",
@@ -238,7 +238,7 @@
         },
         {
           "path": "tests/cli.test.ts",
-          "digest": "sha256:606b6f04a18c1238c5b92fc74683f311c076c1c708e6ffe3d30dec551be41523"
+          "digest": "sha256:fa1a143e313e57f988cc449ddd5f09066c669f52b448e7f78321020e67c5f96f"
         },
         {
           "path": "tests/fixtures/collisions.json",
@@ -400,7 +400,7 @@
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:1ef9a512d434495ca2fc9e35321ff876bff7cda99f9f0bbd6180e168726676a4"
+          "digest": "sha256:66add4078229bd30ff431acd3bcef930fdd8680ad0bcec763352e3fb78c74305"
         },
         {
           "path": "packages/core/src/index.ts",
@@ -460,7 +460,7 @@
       "sources": [
         {
           "path": "tests/cli.test.ts",
-          "digest": "sha256:606b6f04a18c1238c5b92fc74683f311c076c1c708e6ffe3d30dec551be41523"
+          "digest": "sha256:fa1a143e313e57f988cc449ddd5f09066c669f52b448e7f78321020e67c5f96f"
         },
         {
           "path": "tests/fixtures/collisions.json",

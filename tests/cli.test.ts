@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
+import { mkdtempSync, rmSync, symlinkSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { describe, it } from "node:test";
-import { parseArgs, parseNiceClassesFlag } from "../packages/cli/src/index.ts";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { isExecutedDirectly, parseArgs, parseNiceClassesFlag } from "../packages/cli/src/index.ts";
 
 describe("CLI parser", () => {
   it("parses commands, values, inline values, and booleans", () => {
@@ -24,5 +28,25 @@ describe("CLI parser", () => {
       () => parseNiceClassesFlag(parseArgs(["check", "TaskForge", "--nice-classes"])),
       /comma-separated integers from 1 to 45/,
     );
+  });
+
+  it("recognizes direct execution and rejects missing entries", () => {
+    const cliSource = fileURLToPath(new URL("../packages/cli/src/index.ts", import.meta.url));
+    assert.equal(isExecutedDirectly(pathToFileURL(cliSource).href, cliSource), true);
+    assert.equal(isExecutedDirectly(pathToFileURL(cliSource).href, undefined), false);
+    assert.equal(isExecutedDirectly(pathToFileURL(cliSource).href, join(tmpdir(), "nametagged-missing")), false);
+  });
+
+  it("recognizes direct execution through a package-manager symlink", { skip: process.platform === "win32" }, () => {
+    const cliSource = fileURLToPath(new URL("../packages/cli/src/index.ts", import.meta.url));
+    const directory = mkdtempSync(join(tmpdir(), "nametagged-cli-"));
+    const symlink = join(directory, "nametagged");
+
+    try {
+      symlinkSync(cliSource, symlink);
+      assert.equal(isExecutedDirectly(pathToFileURL(cliSource).href, symlink), true);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
   });
 });
