@@ -1,6 +1,6 @@
 import { createRequire } from "node:module";
-import { evidence, executableInPath, nameVariants, normalizeName, type AdapterSet, type CheckContext, createLimit } from "@nametagged/core";
-import type { ProviderResult, TrademarkScreening } from "@nametagged/schemas";
+import { evidence, executableInPath, nameVariants, normalizeName, type AdapterSet, type CheckContext, createLimit } from "@namescope/core";
+import type { ProviderResult, TrademarkScreening } from "@namescope/schemas";
 
 interface NpmNameValidation {
   validForNewPackages: boolean;
@@ -52,7 +52,7 @@ async function getJson(provider: string, url: string, context: CheckContext, hea
         method: "GET",
         headers: {
           accept: "application/json",
-          "user-agent": "nametagged/0.1 (+https://github.com/ensp1re/nametagged)",
+          "user-agent": "namescope/0.1 (+https://github.com/ensp1re/namescope)",
           ...headers,
         },
         signal: controller.signal,
@@ -212,7 +212,7 @@ async function checkRegistry(name: string, registry: RegistryDefinition, context
   const checked: string[] = [];
   try {
     for (const variant of variants) {
-      const response = await getJson(registry.id, registry.endpoint(variant), context, registry.id === "crates" ? { "x-requested-with": "nametagged" } : {});
+      const response = await getJson(registry.id, registry.endpoint(variant), context, registry.id === "crates" ? { "x-requested-with": "namescope" } : {});
       checked.push(variant);
       if (response.status >= 200 && response.status < 300) matches.push(variant);
       else if (response.status !== 404) {

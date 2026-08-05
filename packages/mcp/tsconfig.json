@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "tsBuildInfoFile": "../../node_modules/.cache/nametagged-mcp.tsbuildinfo"
+    "tsBuildInfoFile": "../../node_modules/.cache/namescope-mcp.tsbuildinfo"
   },
   "include": ["src/**/*.ts"],
   "references": [

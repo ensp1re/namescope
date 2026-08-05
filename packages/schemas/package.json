@@ -1,7 +1,7 @@
 {
-  "name": "@nametagged/schemas",
+  "name": "@namescope/schemas",
   "version": "0.1.0",
-  "description": "Versioned schemas for Nametagged reports and configuration",
+  "description": "Versioned schemas for NameScope reports and configuration",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

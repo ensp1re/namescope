@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import { realpathSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { createDefaultAdapters } from "@nametagged/adapters";
-import { JsonCache, NamingIntelligence, loadConfig, type CheckOptions, type GenerateOptions } from "@nametagged/core";
-import type { CompletedResult, ProviderResult } from "@nametagged/schemas";
-import { runMcpServer } from "@nametagged/mcp";
+import { createDefaultAdapters } from "@namescope/adapters";
+import { JsonCache, NamingIntelligence, loadConfig, type CheckOptions, type GenerateOptions } from "@namescope/core";
+import type { CompletedResult, ProviderResult } from "@namescope/schemas";
+import { runMcpServer } from "@namescope/mcp";
 
 type OutputMode = "human" | "json" | "compact-json" | "markdown";
 
@@ -109,7 +109,7 @@ function renderReport(result: CompletedResult): string {
 function renderMarkdown(results: CompletedResult[]): string {
   const rows = results.map((result, index) => `| ${index + 1} | ${result.name} | ${result.score} | ${result.verdict} | ${result.dimensions.packages?.score ?? 0} | ${result.dimensions.github?.score ?? 0} | ${result.dimensions.domains?.score ?? 0} |`);
   const details = results.map((result) => `## ${result.name}\n\n${result.explanation}\n\n### Warnings\n\n${result.warnings.map((warning) => `- ${warning}`).join("\n")}`).join("\n\n");
-  return `# Nametagged report\n\n| Rank | Name | Score | Verdict | Packages | GitHub | Domains |\n| ---: | --- | ---: | --- | ---: | ---: | ---: |\n${rows.join("\n")}\n\n${details}\n`;
+  return `# NameScope report\n\n| Rank | Name | Score | Verdict | Packages | GitHub | Domains |\n| ---: | --- | ---: | --- | ---: | ---: | ---: |\n${rows.join("\n")}\n\n${details}\n`;
 }
 
 function emit(value: unknown, mode: OutputMode): void {
@@ -136,15 +136,15 @@ function emit(value: unknown, mode: OutputMode): void {
 }
 
 function help(): string {
-  return `Nametagged 0.1 — free local-first project naming intelligence
+  return `NameScope 0.1 — free local-first project naming intelligence
 
 Usage:
-  nametagged find <description> [--count 12] [--styles technical,playful]
-  nametagged check <name>
-  nametagged rank <name...>
-  nametagged domains <name> [--tlds com,io,dev,app]
-  nametagged packages <name> [--registries npm,pypi,crates]
-  nametagged mcp
+  namescope find <description> [--count 12] [--styles technical,playful]
+  namescope check <name>
+  namescope rank <name...>
+  namescope domains <name> [--tlds com,io,dev,app]
+  namescope packages <name> [--registries npm,pypi,crates]
+  namescope mcp
 
 Common options:
   --offline                 Prevent all network requests
@@ -250,7 +250,7 @@ export function isExecutedDirectly(moduleUrl: string, argvEntry: string | undefi
 if (isExecutedDirectly(import.meta.url, process.argv[1])) {
   main().catch((error: unknown) => {
     const message = error instanceof Error ? error.message : "Unknown error";
-    process.stderr.write(`nametagged: ${message}\n`);
+    process.stderr.write(`namescope: ${message}\n`);
     process.exitCode = 1;
   });
 }

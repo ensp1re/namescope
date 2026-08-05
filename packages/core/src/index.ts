@@ -14,9 +14,9 @@ import {
   type QualitySignal,
   type ScoringWeights,
   type TrademarkScreening,
-} from "@nametagged/schemas";
+} from "@namescope/schemas";
 
-export * from "@nametagged/schemas";
+export * from "@namescope/schemas";
 
 const DEFAULT_STYLES = ["technical", "open-source", "developer-tool"];
 const STOP_WORDS = new Set([
@@ -277,7 +277,7 @@ export class JsonCache {
 
   constructor(options: CacheOptions = {}) {
     const base = process.env.XDG_CACHE_HOME || join(homedir(), ".cache");
-    this.path = options.path ?? join(base, "nametagged", "cache-v1.json");
+    this.path = options.path ?? join(base, "namescope", "cache-v1.json");
     this.disabled = options.disabled ?? false;
   }
 

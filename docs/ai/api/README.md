@@ -21,4 +21,4 @@ API routes, schemas, or server framework signals were detected
 
 ## Maintained knowledge
 
-No HTTP application API exists. Public programmatic surfaces are versioned Zod result contracts, exported TypeScript library functions, and eight MCP tools. Treat every provider payload as untrusted. Add public fields through schemas first, preserve `nametagged-result/v1` compatibility, and update both CLI and MCP verification.
+No HTTP application API exists. Public programmatic surfaces are versioned Zod result contracts, exported TypeScript library functions, and eight MCP tools. Treat every provider payload as untrusted. Add public fields through schemas first, preserve `namescope-result/v1` compatibility, and update both CLI and MCP verification.

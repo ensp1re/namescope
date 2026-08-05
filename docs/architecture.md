@@ -1,6 +1,6 @@
 # Architecture
 
-Nametagged is an npm workspace with one dependency direction:
+NameScope is an npm workspace with one dependency direction:
 
 ```text
 schemas
@@ -14,7 +14,7 @@ adapters
  cli
 ```
 
-`@nametagged/schemas` owns versioned Zod contracts and JSON Schema. `@nametagged/core` owns deterministic generation, normalization, quality rules, scoring, configuration, cache, concurrency, and orchestration. `@nametagged/adapters` implements RDAP, npm, PyPI, crates.io, GitHub, local command, and trademark-link providers. `@nametagged/mcp` maps validated MCP tools to core calls. Published package `nametagged` provides CLI parsing and output formatting.
+`@namescope/schemas` owns versioned Zod contracts and JSON Schema. `@namescope/core` owns deterministic generation, normalization, quality rules, scoring, configuration, cache, concurrency, and orchestration. `@namescope/adapters` implements RDAP, npm, PyPI, crates.io, GitHub, local command, and trademark-link providers. `@namescope/mcp` maps validated MCP tools to core calls. Published package `namescope` provides CLI parsing and output formatting.
 
 Both CLI and MCP construct `NamingIntelligence` with the same adapters. Business logic is not duplicated.
 

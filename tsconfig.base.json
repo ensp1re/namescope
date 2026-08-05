@@ -19,10 +19,10 @@
     "resolveJsonModule": true,
     "types": ["node"],
     "paths": {
-      "@nametagged/schemas": ["./packages/schemas/src/index.ts"],
-      "@nametagged/core": ["./packages/core/src/index.ts"],
-      "@nametagged/adapters": ["./packages/adapters/src/index.ts"],
-      "@nametagged/mcp": ["./packages/mcp/src/index.ts"]
+      "@namescope/schemas": ["./packages/schemas/src/index.ts"],
+      "@namescope/core": ["./packages/core/src/index.ts"],
+      "@namescope/adapters": ["./packages/adapters/src/index.ts"],
+      "@namescope/mcp": ["./packages/mcp/src/index.ts"]
     }
   }
 }

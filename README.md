@@ -1,19 +1,19 @@
-# Nametagged
+# NameScope
 
 Picking a project name is easy. Finding out whether that name is usable across package registries, GitHub, domains, and the command line is the tedious part.
 
-Nametagged does that research from your terminal. Give it a project description or a shortlist of names and it returns a scored report with the evidence behind every result. Generation and scoring run locally; network checks use public provider endpoints.
+NameScope does that research from your terminal. Give it a project description or a shortlist of names and it returns a scored report with the evidence behind every result. Generation and scoring run locally; network checks use public provider endpoints.
 
-Nametagged is built for software projects. It cannot promise that a business name, domain, social handle, or trademark is legally available.
+NameScope is built for software projects. It cannot promise that a business name, domain, social handle, or trademark is legally available.
 
 ## Quick start
 
-Nametagged requires Node.js 24 LTS or newer. You can run it without installing anything globally:
+NameScope requires Node.js 24 LTS or newer. You can run it without installing anything globally:
 
 ```bash
-npx nametagged find "a fast open-source database migration tool"
-npx nametagged check taskforge
-npx nametagged rank taskforge taskmint orbitdesk
+npx namescope find "a fast open-source database migration tool"
+npx namescope check taskforge
+npx namescope rank taskforge taskmint orbitdesk
 ```
 
 No account, subscription, payment, hosted backend, Docker setup, or language model is required. A `GITHUB_TOKEN` is optional and only increases GitHub API rate limits.
@@ -52,11 +52,11 @@ Provider-specific commands such as `domains` and `packages` return their evidenc
 
 ### 1. Generate or accept candidates
 
-Name generation is local and reproducible. Nametagged combines useful words from the description with related terms, compounds, prefixes, suffixes, and blends. Generated names are only ideas; they do not carry availability claims until checks run.
+Name generation is local and reproducible. NameScope combines useful words from the description with related terms, compounds, prefixes, suffixes, and blends. Generated names are only ideas; they do not carry availability claims until checks run.
 
 ### 2. Check public and local namespaces
 
-Nametagged checks each candidate against the sources relevant to software projects:
+NameScope checks each candidate against the sources relevant to software projects:
 
 | Area | What is checked | Important limitation |
 | --- | --- | --- |
@@ -71,7 +71,7 @@ Search distinctiveness stays neutral until a search adapter exists. Social handl
 
 ### 3. Keep uncertainty visible
 
-A timeout, rate limit, blocked request, unsupported provider, or malformed response remains `unknown`, `unsupported`, or `error`. Nametagged never turns a failed lookup into “available.”
+A timeout, rate limit, blocked request, unsupported provider, or malformed response remains `unknown`, `unsupported`, or `error`. NameScope never turns a failed lookup into “available.”
 
 Every completed report includes provider evidence, confidence, timestamps, warnings, unknown checks, dimension scores, weights, and a plain-language explanation.
 
@@ -85,30 +85,30 @@ A package collision or another confirmed blocking conflict can cap or block a re
 
 | Command | Use it to |
 | --- | --- |
-| `nametagged find <description>` | Generate, check, and rank project-name ideas |
-| `nametagged check <name>` | Build a complete report for one name |
-| `nametagged rank <name...>` | Compare two or more existing candidates |
-| `nametagged domains <name>` | Check selected domain extensions only |
-| `nametagged packages <name>` | Check selected package registries only |
-| `nametagged mcp` | Start the local MCP stdio server |
+| `namescope find <description>` | Generate, check, and rank project-name ideas |
+| `namescope check <name>` | Build a complete report for one name |
+| `namescope rank <name...>` | Compare two or more existing candidates |
+| `namescope domains <name>` | Check selected domain extensions only |
+| `namescope packages <name>` | Check selected package registries only |
+| `namescope mcp` | Start the local MCP stdio server |
 
 Useful examples:
 
 ```bash
 # Check selected domains
-npx nametagged domains taskforge --tlds com,io,dev,app
+npx namescope domains taskforge --tlds com,io,dev,app
 
 # Check selected package registries
-npx nametagged packages taskforge --registries npm,pypi,crates
+npx namescope packages taskforge --registries npm,pypi,crates
 
 # Return structured output
-npx nametagged check taskforge --json
+npx namescope check taskforge --json
 
 # Prevent every network request
-npx nametagged check taskforge --offline
+npx namescope check taskforge --offline
 
 # Include preliminary trademark resources
-npx nametagged check taskforge --include-trademark --nice-classes 9,42
+npx namescope check taskforge --include-trademark --nice-classes 9,42
 ```
 
 Output formats are human-readable text, `--json`, `--compact-json`, and `--markdown`.
@@ -117,7 +117,7 @@ Output formats are human-readable text, `--json`, `--compact-json`, and `--markd
 
 Generation, normalization, quality analysis, scoring, cache handling, and CLI collision checks run locally. Remote commands send only the requested candidate and query variant to the selected providers.
 
-Use `--offline` to prevent all network requests. Nametagged has no telemetry and does not collect project names or descriptions. Read the [privacy documentation](docs/privacy.md) for provider-by-provider details.
+Use `--offline` to prevent all network requests. NameScope has no telemetry and does not collect project names or descriptions. Read the [privacy documentation](docs/privacy.md) for provider-by-provider details.
 
 ## Configuration
 
@@ -127,14 +127,14 @@ See the [configuration guide](docs/configuration.md) and [scoring methodology](d
 
 ## MCP setup
 
-Nametagged exposes the same engine through a local MCP stdio server:
+NameScope exposes the same engine through a local MCP stdio server:
 
 ```json
 {
   "mcpServers": {
-    "nametagged": {
+    "namescope": {
       "command": "npx",
-      "args": ["-y", "nametagged", "mcp"]
+      "args": ["-y", "namescope", "mcp"]
     }
   }
 }
@@ -145,8 +145,8 @@ Available tools are `generate_names`, `check_name`, `rank_names`, `check_domains
 ## Development
 
 ```bash
-git clone https://github.com/ensp1re/nametagged.git
-cd nametagged
+git clone https://github.com/ensp1re/namescope.git
+cd namescope
 npm install
 npm run check
 npm run build

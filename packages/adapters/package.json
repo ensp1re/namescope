@@ -1,7 +1,7 @@
 {
-  "name": "@nametagged/adapters",
+  "name": "@namescope/adapters",
   "version": "0.1.0",
-  "description": "Free public-data and local-environment adapters for Nametagged",
+  "description": "Free public-data and local-environment adapters for NameScope",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,8 +15,8 @@
   "license": "MIT",
   "publishConfig": { "access": "public" },
   "dependencies": {
-    "@nametagged/core": "0.1.0",
-    "@nametagged/schemas": "0.1.0",
+    "@namescope/core": "0.1.0",
+    "@namescope/schemas": "0.1.0",
     "validate-npm-package-name": "^6.0.2"
   }
 }

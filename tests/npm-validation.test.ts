@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { checkPackages } from "@nametagged/adapters";
-import { JsonCache, NamingIntelligence, type AdapterSet } from "@nametagged/core";
-import { ConfigSchema, type ProviderResult } from "@nametagged/schemas";
+import { checkPackages } from "@namescope/adapters";
+import { JsonCache, NamingIntelligence, type AdapterSet } from "@namescope/core";
+import { ConfigSchema, type ProviderResult } from "@namescope/schemas";
 
 function provider(providerName: string, status: ProviderResult["status"], score: number): ProviderResult {
   return { provider: providerName, status, score, summary: `${providerName} ${status}`, warnings: [], evidence: [] };

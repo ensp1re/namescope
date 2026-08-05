@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "tsBuildInfoFile": "../../node_modules/.cache/nametagged-core.tsbuildinfo"
+    "tsBuildInfoFile": "../../node_modules/.cache/namescope-core.tsbuildinfo"
   },
   "include": ["src/**/*.ts"],
   "references": [{ "path": "../schemas" }]

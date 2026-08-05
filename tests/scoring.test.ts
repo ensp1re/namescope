@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { analyzeQuality, explainScore, JsonCache, NamingIntelligence, type AdapterSet } from "@nametagged/core";
-import { CompletedResultSchema, ConfigSchema, type ProviderResult } from "@nametagged/schemas";
+import { analyzeQuality, explainScore, JsonCache, NamingIntelligence, type AdapterSet } from "@namescope/core";
+import { CompletedResultSchema, ConfigSchema, type ProviderResult } from "@namescope/schemas";
 
 function provider(provider: string, status: ProviderResult["status"], score: number): ProviderResult {
   return { provider, status, score, summary: `${provider} ${status}`, warnings: [], evidence: [] };
@@ -35,7 +35,7 @@ describe("quality and composite scoring", () => {
     const intelligence = new NamingIntelligence(adapters, ConfigSchema.parse({}), new JsonCache({ disabled: true }));
     const report = await intelligence.checkName("TaskForge", { projectDescription: "local task manager" });
     assert.doesNotThrow(() => CompletedResultSchema.parse(report));
-    assert.equal(report.schemaVersion, "nametagged-result/v1");
+    assert.equal(report.schemaVersion, "namescope-result/v1");
     assert.equal(report.verdict, "strong candidate");
     assert.match(explainScore(report), /packages:/);
     assert.ok(report.warnings.some((warning) => warning.includes("Trademark")));

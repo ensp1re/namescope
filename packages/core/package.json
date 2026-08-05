@@ -1,7 +1,7 @@
 {
-  "name": "@nametagged/core",
+  "name": "@namescope/core",
   "version": "0.1.0",
-  "description": "Deterministic naming, scoring, caching, and orchestration for Nametagged",
+  "description": "Deterministic naming, scoring, caching, and orchestration for NameScope",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "publishConfig": { "access": "public" },
   "dependencies": {
-    "@nametagged/schemas": "0.1.0",
+    "@namescope/schemas": "0.1.0",
     "zod": "^4.0.0"
   }
 }

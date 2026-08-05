@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const RESULT_SCHEMA_VERSION = "nametagged-result/v1" as const;
+export const RESULT_SCHEMA_VERSION = "namescope-result/v1" as const;
 
 export const EvidenceSchema = z.object({
   provider: z.string(),

@@ -15,4 +15,4 @@ Database schemas, migrations, or persistence libraries were detected
 
 ## Maintained knowledge
 
-Only runtime persistence is versioned JSON provider cache. Default path is `XDG_CACHE_HOME/nametagged/cache-v1.json` or platform home cache directory. Writes are serialized, atomically renamed, and mode `0600`. Entries record provider, query, result, retrieval time, expiry, and schema version. `--no-cache` disables reads and writes; `--refresh` ignores existing entries.
+Only runtime persistence is versioned JSON provider cache. Default path is `XDG_CACHE_HOME/namescope/cache-v1.json` or platform home cache directory. Writes are serialized, atomically renamed, and mode `0600`. Entries record provider, query, result, retrieval time, expiry, and schema version. `--no-cache` disables reads and writes; `--refresh` ignores existing entries.

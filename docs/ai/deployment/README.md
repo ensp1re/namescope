@@ -21,4 +21,4 @@ Deployment, container, CI, or infrastructure configuration was detected
 
 ## Maintained knowledge
 
-Deployment is npm publication, not a hosted service. Publish version-matched internal workspaces before `nametagged`, then verify `npx nametagged --help` and stdio MCP from a clean directory. CI runs Node 24 on Linux, macOS, and Windows. No container, database server, web server, or cloud infrastructure is required.
+Deployment is npm publication, not a hosted service. Publish version-matched internal workspaces before `namescope`, then verify `npx namescope --help` and stdio MCP from a clean directory. CI runs Node 24 on Linux, macOS, and Windows. No container, database server, web server, or cloud infrastructure is required.
