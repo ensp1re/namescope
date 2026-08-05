@@ -45,7 +45,7 @@ export const QualitySignalSchema = z.object({
 export const DimensionSchema = z.object({
   score: z.number().min(0).max(100),
   status: z.string(),
-  weight: z.number().min(0).max(100),
+  weight: z.number().min(0),
   evidence: z.array(EvidenceSchema).default([]),
 });
 

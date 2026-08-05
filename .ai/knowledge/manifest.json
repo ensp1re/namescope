@@ -2,7 +2,7 @@
   "schemaVersion": "aiviron-knowledge-manifest/v1alpha1",
   "generatedBy": "aiviron-knowledge-service/0.1.0",
   "generatedAt": "2026-08-05T19:27:50.030Z",
-  "updatedAt": "2026-08-05T20:06:54.311Z",
+  "updatedAt": "2026-08-05T20:13:06.037Z",
   "projectId": "prj_31fcd3a110648fe720b077da",
   "docsRoot": "docs/ai",
   "documents": [
@@ -90,7 +90,7 @@
         },
         {
           "path": "packages/core/src/index.ts",
-          "digest": "sha256:ccf7389bee0f075dbfa97c62298c68b4ca4dbfbf4d89de86e14da5f60dc2843e"
+          "digest": "sha256:84c239a666fa765ec3021eabd1bb4764a4ed7357f38d9ca21e0687fd2996a39a"
         },
         {
           "path": "packages/mcp/src/index.ts",
@@ -98,7 +98,7 @@
         },
         {
           "path": "packages/schemas/src/index.ts",
-          "digest": "sha256:ed3748794c2aab382f26e261518c004be8c23b021e77ecc86c21090750fbad0f"
+          "digest": "sha256:9aef259a0b96dd54f63803866217165f5f02de95d5c986c1b9fda56d8a9758d0"
         }
       ]
     },
@@ -266,7 +266,7 @@
         },
         {
           "path": "tests/scoring.test.ts",
-          "digest": "sha256:db8096c125b85abfa444cc9521be8a60e623c94e4b507e4b0e29668afd7261e3"
+          "digest": "sha256:4d3ed51d70c2718480cd5222332ef4b4201778d02a9116bf32db1c683779bc59"
         }
       ]
     },
@@ -404,7 +404,7 @@
         },
         {
           "path": "packages/core/src/index.ts",
-          "digest": "sha256:ccf7389bee0f075dbfa97c62298c68b4ca4dbfbf4d89de86e14da5f60dc2843e"
+          "digest": "sha256:84c239a666fa765ec3021eabd1bb4764a4ed7357f38d9ca21e0687fd2996a39a"
         }
       ]
     },
@@ -488,7 +488,7 @@
         },
         {
           "path": "tests/scoring.test.ts",
-          "digest": "sha256:db8096c125b85abfa444cc9521be8a60e623c94e4b507e4b0e29668afd7261e3"
+          "digest": "sha256:4d3ed51d70c2718480cd5222332ef4b4201778d02a9116bf32db1c683779bc59"
         }
       ]
     }
