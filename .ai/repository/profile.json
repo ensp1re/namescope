@@ -6,9 +6,48 @@
   "name": "nametagged",
   "root": ".",
   "remote": null,
-  "revision": null,
-  "detectedStacks": [],
-  "commands": [],
+  "revision": "git:adb53e10e4ef1594f4aff6f6e74d5cd886a7551a",
+  "detectedStacks": [
+    "javascript-typescript"
+  ],
+  "commands": [
+    {
+      "name": "build",
+      "command": "npm run build"
+    },
+    {
+      "name": "check",
+      "command": "npm run check"
+    },
+    {
+      "name": "clean",
+      "command": "npm run clean"
+    },
+    {
+      "name": "cli",
+      "command": "npm run cli"
+    },
+    {
+      "name": "mcp",
+      "command": "npm run mcp"
+    },
+    {
+      "name": "prepack",
+      "command": "npm run prepack"
+    },
+    {
+      "name": "test",
+      "command": "npm run test"
+    },
+    {
+      "name": "test:coverage",
+      "command": "npm run test:coverage"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck"
+    }
+  ],
   "selectedAgents": [
     "codex",
     "claude"

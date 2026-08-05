@@ -1,0 +1,30 @@
+{
+  "name": "nametagged-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Free local-first software project naming intelligence",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "tsc -b --clean",
+    "typecheck": "tsc -b --pretty false",
+    "test": "tsx --test tests/*.test.ts",
+    "test:coverage": "tsx --test --experimental-test-coverage tests/*.test.ts",
+    "check": "npm run typecheck && npm test",
+    "cli": "node packages/cli/dist/index.js",
+    "mcp": "node packages/cli/dist/index.js mcp",
+    "prepack": "npm run check"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^6.0.0"
+  }
+}

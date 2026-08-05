@@ -1,0 +1,21 @@
+{
+  "name": "@nametagged/core",
+  "version": "0.1.0",
+  "description": "Deterministic naming, scoring, caching, and orchestration for Nametagged",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist/*.js", "dist/*.js.map", "dist/*.d.ts", "dist/*.d.ts.map", "LICENSE"],
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "dependencies": {
+    "@nametagged/schemas": "0.1.0",
+    "zod": "^4.0.0"
+  }
+}

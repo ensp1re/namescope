@@ -1,0 +1,31 @@
+{
+  "name": "nametagged",
+  "version": "0.1.0",
+  "description": "Free local-first project-name generator and collision checker",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "nametagged": "./dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist/index.js", "dist/index.js.map", "dist/index.d.ts", "dist/index.d.ts.map", "README.md", "LICENSE"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "dependencies": {
+    "@nametagged/adapters": "0.1.0",
+    "@nametagged/core": "0.1.0",
+    "@nametagged/mcp": "0.1.0",
+    "@nametagged/schemas": "0.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

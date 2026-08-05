@@ -1,0 +1,480 @@
+{
+  "schemaVersion": "aiviron-knowledge-manifest/v1alpha1",
+  "generatedBy": "aiviron-knowledge-service/0.1.0",
+  "generatedAt": "2026-08-05T19:27:50.030Z",
+  "updatedAt": "2026-08-05T19:41:29.073Z",
+  "projectId": "prj_18e47a133cd73b4a57dd6116",
+  "docsRoot": "docs/ai",
+  "documents": [
+    {
+      "path": "docs/ai/api/README.md",
+      "module": "api",
+      "title": "Application API",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.75,
+      "sources": [
+        {
+          "path": "CODE_OF_CONDUCT.md",
+          "digest": "sha256:d29f87dd859d49b595e1e9f91850c493dff81fde17e1ba8c2089e5d91c2fbbc9"
+        },
+        {
+          "path": "LICENSE",
+          "digest": "sha256:5ebd3c5e865c6d01d774ae5153b63a454e0c226c478a20e9da4aac885d37b519"
+        },
+        {
+          "path": "packages/adapters/LICENSE",
+          "digest": "sha256:5ebd3c5e865c6d01d774ae5153b63a454e0c226c478a20e9da4aac885d37b519"
+        },
+        {
+          "path": "packages/cli/LICENSE",
+          "digest": "sha256:5ebd3c5e865c6d01d774ae5153b63a454e0c226c478a20e9da4aac885d37b519"
+        },
+        {
+          "path": "packages/core/LICENSE",
+          "digest": "sha256:5ebd3c5e865c6d01d774ae5153b63a454e0c226c478a20e9da4aac885d37b519"
+        },
+        {
+          "path": "packages/mcp/LICENSE",
+          "digest": "sha256:5ebd3c5e865c6d01d774ae5153b63a454e0c226c478a20e9da4aac885d37b519"
+        },
+        {
+          "path": "packages/schemas/LICENSE",
+          "digest": "sha256:5ebd3c5e865c6d01d774ae5153b63a454e0c226c478a20e9da4aac885d37b519"
+        },
+        {
+          "path": "tests/generator.test.ts",
+          "digest": "sha256:d8811b49b37b61cba22c39c39165b15b8a76ea800549182e852b4a5ee88e3184"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/architecture.md",
+      "module": "architecture",
+      "title": "Architecture",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "path": "package.json",
+          "digest": "sha256:4452308f404e087dc1a866ab43d9c19f2951e10202a70849d5524e6f5424eb3f"
+        },
+        {
+          "path": "packages/adapters/package.json",
+          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+        },
+        {
+          "path": "packages/cli/package.json",
+          "digest": "sha256:1f7251b16bfcb7d190cc57c53550376c96b6fa75663637e2e5e16a66cf800d04"
+        },
+        {
+          "path": "packages/core/package.json",
+          "digest": "sha256:d3b53db5ff55d92d81bf5780e38735f1a769983100b095863c0e52fa55fbcd0d"
+        },
+        {
+          "path": "packages/mcp/package.json",
+          "digest": "sha256:a393f637bf6038f7f992c728657197461f475e91d5e80659bb37df48913f69e7"
+        },
+        {
+          "path": "packages/schemas/package.json",
+          "digest": "sha256:590a92e9ddd78a3ddfeb26497fe7f8591fc3eb281bcfbf633a8a24fd5b4b2619"
+        },
+        {
+          "path": "packages/adapters/src/index.ts",
+          "digest": "sha256:a327d9c76204ee9ff180e2f96b8d9cb6ace3bbe238f966611f93d90201c449d0"
+        },
+        {
+          "path": "packages/cli/src/index.ts",
+          "digest": "sha256:db40030125370911353a48836f1474fae719fe469819bd008fdaf258ac4138a9"
+        },
+        {
+          "path": "packages/core/src/index.ts",
+          "digest": "sha256:1d42a59c004056839d21302301ddb49d74efeeb27a0f9e1745de88062b9ed78f"
+        },
+        {
+          "path": "packages/mcp/src/index.ts",
+          "digest": "sha256:a35ed0ccbd9962b391bea9e97525a05561bdd99af7063d61d7745f2563e560b3"
+        },
+        {
+          "path": "packages/schemas/src/index.ts",
+          "digest": "sha256:89a6add332b9a3282f2a0268c77f9c1ab4ea08e38f38d24392e0c853dee120fa"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/cli/README.md",
+      "module": "cli",
+      "title": "Command-line interface",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.99,
+      "sources": [
+        {
+          "path": "docs/stack-evaluation.md",
+          "digest": "sha256:a0903050418ebb46039b2da97c92044cbcb0f2ace074b2c6a60d5f389a424b17"
+        },
+        {
+          "path": "package-lock.json",
+          "digest": "sha256:f3c9f21a13069e6e13a174894c5fff71912b458532828ea96970e558b82c06a4"
+        },
+        {
+          "path": "packages/cli/LICENSE",
+          "digest": "sha256:5ebd3c5e865c6d01d774ae5153b63a454e0c226c478a20e9da4aac885d37b519"
+        },
+        {
+          "path": "packages/cli/package.json",
+          "digest": "sha256:1f7251b16bfcb7d190cc57c53550376c96b6fa75663637e2e5e16a66cf800d04"
+        },
+        {
+          "path": "packages/cli/README.md",
+          "digest": "sha256:ebe7253c2dc998c2fa44eb4676aff92cc2af0eb0a9714c4a869956a3a6698bc6"
+        },
+        {
+          "path": "packages/cli/src/index.ts",
+          "digest": "sha256:db40030125370911353a48836f1474fae719fe469819bd008fdaf258ac4138a9"
+        },
+        {
+          "path": "packages/cli/tsconfig.json",
+          "digest": "sha256:55eb76211f24c8be977e69c4ff9b5f916fa4a08787b9a87d1b5e0e89bb7a8075"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/data/README.md",
+      "module": "data",
+      "title": "Data and persistence",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.65,
+      "sources": [
+        {
+          "path": ".ai/config.yaml",
+          "digest": "sha256:9c303b6c71d45b7302c2ee46ec4c11761a824bf978e37973fb3e124ef9f9a52d"
+        },
+        {
+          "path": "docs/stack-evaluation.md",
+          "digest": "sha256:a0903050418ebb46039b2da97c92044cbcb0f2ace074b2c6a60d5f389a424b17"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/deployment/README.md",
+      "module": "deployment",
+      "title": "Deployment and infrastructure",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.75,
+      "sources": [
+        {
+          "path": ".ai/README.md",
+          "digest": "sha256:58152e484b6c022cc75504d96a050c9c1509ed6975c4c4d6a5c02d1766e8fdf2"
+        },
+        {
+          "path": "docs/data-sources.md",
+          "digest": "sha256:a55de7ef532c959376536c3baa71f73ff8317da81d251fdc0dc86fd88b73ecad"
+        },
+        {
+          "path": "docs/limitations.md",
+          "digest": "sha256:5376261efeb393b8147f1fcdc372db3bc2ead9d18cab92e10fb3071be21ad02f"
+        },
+        {
+          "path": "docs/mcp.md",
+          "digest": "sha256:c39384fd2aeab7003ef0ea7e8a52b80f00b5869faf0fc2c5a46cc481d12dfc02"
+        },
+        {
+          "path": "docs/methodology.md",
+          "digest": "sha256:04f28289b16751ded8ec4077e3b89851a37335db2d713a9738cfe92a49c9bbb1"
+        },
+        {
+          "path": "docs/stack-evaluation.md",
+          "digest": "sha256:a0903050418ebb46039b2da97c92044cbcb0f2ace074b2c6a60d5f389a424b17"
+        },
+        {
+          "path": "packages/adapters/src/index.ts",
+          "digest": "sha256:a327d9c76204ee9ff180e2f96b8d9cb6ace3bbe238f966611f93d90201c449d0"
+        },
+        {
+          "path": "README.md",
+          "digest": "sha256:9100951202d78a714b022fd770a743fd9b4aae7c92ea1f8eea8f523ae9c0f8e8"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/development.md",
+      "module": "development",
+      "title": "Development workflow",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "path": "package.json",
+          "digest": "sha256:4452308f404e087dc1a866ab43d9c19f2951e10202a70849d5524e6f5424eb3f"
+        },
+        {
+          "path": "packages/adapters/package.json",
+          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+        },
+        {
+          "path": "packages/cli/package.json",
+          "digest": "sha256:1f7251b16bfcb7d190cc57c53550376c96b6fa75663637e2e5e16a66cf800d04"
+        },
+        {
+          "path": "packages/core/package.json",
+          "digest": "sha256:d3b53db5ff55d92d81bf5780e38735f1a769983100b095863c0e52fa55fbcd0d"
+        },
+        {
+          "path": "packages/mcp/package.json",
+          "digest": "sha256:a393f637bf6038f7f992c728657197461f475e91d5e80659bb37df48913f69e7"
+        },
+        {
+          "path": "packages/schemas/package.json",
+          "digest": "sha256:590a92e9ddd78a3ddfeb26497fe7f8591fc3eb281bcfbf633a8a24fd5b4b2619"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "digest": "sha256:cf00dfb9f958946f971cf24c94a1fb91d806c7ff1bd9c14111e66bacb30885eb"
+        },
+        {
+          "path": "tests/cli.test.ts",
+          "digest": "sha256:0d24c1f5a015bea9eba1f3bb3850fe33adf180d7637d8e695eb5d7debbf0f52a"
+        },
+        {
+          "path": "tests/fixtures/collisions.json",
+          "digest": "sha256:c2b9a80830d7bd2f652e0e9b865eb1306df0dd8619ad79f51abbf1f074df16d0"
+        },
+        {
+          "path": "tests/generator.test.ts",
+          "digest": "sha256:d8811b49b37b61cba22c39c39165b15b8a76ea800549182e852b4a5ee88e3184"
+        },
+        {
+          "path": "tests/mcp.test.ts",
+          "digest": "sha256:4c2bc37c6240d9d812065157375b969b44d7f17e73d65d2ee90fd20be864bfb2"
+        },
+        {
+          "path": "tests/offline.test.ts",
+          "digest": "sha256:6ba9d75e223dab0c205db503e19ef70e8bef0a2238dc58e87f3808e3de96d749"
+        },
+        {
+          "path": "tests/scoring.test.ts",
+          "digest": "sha256:db8096c125b85abfa444cc9521be8a60e623c94e4b507e4b0e29668afd7261e3"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/integrations/README.md",
+      "module": "integrations",
+      "title": "External integrations",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.75,
+      "sources": [
+        {
+          "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+          "digest": "sha256:82a72e7e8ff30dbdf60f81c5beea0414b286b692cf8de40b29932b4cdf35e317"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+          "digest": "sha256:3a24053f96719fd8a919cdae31ecf43b8154c9fcbe22eaa32863103c099f623d"
+        },
+        {
+          "path": ".github/pull_request_template.md",
+          "digest": "sha256:a3cbfb91e2e00502990bac98412b5055ee0e3f027df3578071c390692859e8a8"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "digest": "sha256:cf00dfb9f958946f971cf24c94a1fb91d806c7ff1bd9c14111e66bacb30885eb"
+        },
+        {
+          "path": "docs/architecture.md",
+          "digest": "sha256:2893ac4325f2183282f7a93ee8fd5c8de248d74d3dca006aecd92d306219d8c8"
+        },
+        {
+          "path": "docs/data-sources.md",
+          "digest": "sha256:a55de7ef532c959376536c3baa71f73ff8317da81d251fdc0dc86fd88b73ecad"
+        },
+        {
+          "path": "README.md",
+          "digest": "sha256:9100951202d78a714b022fd770a743fd9b4aae7c92ea1f8eea8f523ae9c0f8e8"
+        },
+        {
+          "path": "SECURITY.md",
+          "digest": "sha256:738b94d6e9e56374e81846fe0faea2cc3c786486eeb98cb446e8cd6ae45512be"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/library/README.md",
+      "module": "library",
+      "title": "Library API",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.99,
+      "sources": [
+        {
+          "path": "package.json",
+          "digest": "sha256:4452308f404e087dc1a866ab43d9c19f2951e10202a70849d5524e6f5424eb3f"
+        },
+        {
+          "path": "packages/adapters/package.json",
+          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+        },
+        {
+          "path": "packages/cli/package.json",
+          "digest": "sha256:1f7251b16bfcb7d190cc57c53550376c96b6fa75663637e2e5e16a66cf800d04"
+        },
+        {
+          "path": "packages/core/package.json",
+          "digest": "sha256:d3b53db5ff55d92d81bf5780e38735f1a769983100b095863c0e52fa55fbcd0d"
+        },
+        {
+          "path": "packages/mcp/package.json",
+          "digest": "sha256:a393f637bf6038f7f992c728657197461f475e91d5e80659bb37df48913f69e7"
+        },
+        {
+          "path": "packages/schemas/package.json",
+          "digest": "sha256:590a92e9ddd78a3ddfeb26497fe7f8591fc3eb281bcfbf633a8a24fd5b4b2619"
+        },
+        {
+          "path": "tsconfig.base.json",
+          "digest": "sha256:7ae34a86363a447e3b6dd1b2f52e46b42b6ea6ea5e765b055aa7f6c34ae57b42"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/overview.md",
+      "module": "overview",
+      "title": "Project overview",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 1,
+      "sources": [
+        {
+          "path": ".ai/README.md",
+          "digest": "sha256:58152e484b6c022cc75504d96a050c9c1509ed6975c4c4d6a5c02d1766e8fdf2"
+        },
+        {
+          "path": "README.md",
+          "digest": "sha256:9100951202d78a714b022fd770a743fd9b4aae7c92ea1f8eea8f523ae9c0f8e8"
+        },
+        {
+          "path": "packages/cli/README.md",
+          "digest": "sha256:ebe7253c2dc998c2fa44eb4676aff92cc2af0eb0a9714c4a869956a3a6698bc6"
+        },
+        {
+          "path": "package.json",
+          "digest": "sha256:4452308f404e087dc1a866ab43d9c19f2951e10202a70849d5524e6f5424eb3f"
+        },
+        {
+          "path": "packages/adapters/package.json",
+          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+        },
+        {
+          "path": "packages/cli/package.json",
+          "digest": "sha256:1f7251b16bfcb7d190cc57c53550376c96b6fa75663637e2e5e16a66cf800d04"
+        },
+        {
+          "path": "packages/core/package.json",
+          "digest": "sha256:d3b53db5ff55d92d81bf5780e38735f1a769983100b095863c0e52fa55fbcd0d"
+        },
+        {
+          "path": "packages/mcp/package.json",
+          "digest": "sha256:a393f637bf6038f7f992c728657197461f475e91d5e80659bb37df48913f69e7"
+        },
+        {
+          "path": "packages/schemas/package.json",
+          "digest": "sha256:590a92e9ddd78a3ddfeb26497fe7f8591fc3eb281bcfbf633a8a24fd5b4b2619"
+        },
+        {
+          "path": "packages/adapters/src/index.ts",
+          "digest": "sha256:a327d9c76204ee9ff180e2f96b8d9cb6ace3bbe238f966611f93d90201c449d0"
+        },
+        {
+          "path": "packages/cli/src/index.ts",
+          "digest": "sha256:db40030125370911353a48836f1474fae719fe469819bd008fdaf258ac4138a9"
+        },
+        {
+          "path": "packages/core/src/index.ts",
+          "digest": "sha256:1d42a59c004056839d21302301ddb49d74efeeb27a0f9e1745de88062b9ed78f"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/README.md",
+      "module": "index",
+      "title": "Project knowledge",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 1,
+      "sources": [
+        {
+          "path": ".ai/README.md",
+          "digest": "sha256:58152e484b6c022cc75504d96a050c9c1509ed6975c4c4d6a5c02d1766e8fdf2"
+        },
+        {
+          "path": "README.md",
+          "digest": "sha256:9100951202d78a714b022fd770a743fd9b4aae7c92ea1f8eea8f523ae9c0f8e8"
+        },
+        {
+          "path": "packages/cli/README.md",
+          "digest": "sha256:ebe7253c2dc998c2fa44eb4676aff92cc2af0eb0a9714c4a869956a3a6698bc6"
+        },
+        {
+          "path": "package.json",
+          "digest": "sha256:4452308f404e087dc1a866ab43d9c19f2951e10202a70849d5524e6f5424eb3f"
+        },
+        {
+          "path": "packages/adapters/package.json",
+          "digest": "sha256:241d57e5ece66fd54bbbc2aa65761e43803dbe91bcce27e040db079eeff5a1c0"
+        },
+        {
+          "path": "packages/cli/package.json",
+          "digest": "sha256:1f7251b16bfcb7d190cc57c53550376c96b6fa75663637e2e5e16a66cf800d04"
+        },
+        {
+          "path": "packages/core/package.json",
+          "digest": "sha256:d3b53db5ff55d92d81bf5780e38735f1a769983100b095863c0e52fa55fbcd0d"
+        },
+        {
+          "path": "packages/mcp/package.json",
+          "digest": "sha256:a393f637bf6038f7f992c728657197461f475e91d5e80659bb37df48913f69e7"
+        }
+      ]
+    },
+    {
+      "path": "docs/ai/testing/README.md",
+      "module": "testing",
+      "title": "Testing strategy",
+      "ownership": "aiviron",
+      "status": "generated",
+      "confidence": 0.75,
+      "sources": [
+        {
+          "path": "tests/cli.test.ts",
+          "digest": "sha256:0d24c1f5a015bea9eba1f3bb3850fe33adf180d7637d8e695eb5d7debbf0f52a"
+        },
+        {
+          "path": "tests/fixtures/collisions.json",
+          "digest": "sha256:c2b9a80830d7bd2f652e0e9b865eb1306df0dd8619ad79f51abbf1f074df16d0"
+        },
+        {
+          "path": "tests/generator.test.ts",
+          "digest": "sha256:d8811b49b37b61cba22c39c39165b15b8a76ea800549182e852b4a5ee88e3184"
+        },
+        {
+          "path": "tests/mcp.test.ts",
+          "digest": "sha256:4c2bc37c6240d9d812065157375b969b44d7f17e73d65d2ee90fd20be864bfb2"
+        },
+        {
+          "path": "tests/offline.test.ts",
+          "digest": "sha256:6ba9d75e223dab0c205db503e19ef70e8bef0a2238dc58e87f3808e3de96d749"
+        },
+        {
+          "path": "tests/scoring.test.ts",
+          "digest": "sha256:db8096c125b85abfa444cc9521be8a60e623c94e4b507e4b0e29668afd7261e3"
+        }
+      ]
+    }
+  ]
+}

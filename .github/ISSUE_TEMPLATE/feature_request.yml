@@ -1,0 +1,27 @@
+name: Feature request
+description: Propose a focused, free, local-first improvement
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Naming problem
+      description: What developer workflow is not covered?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Project constraints
+      options:
+        - label: Core use remains free without account, API key, payment, wallet, hosted backend, or required model.
+          required: true
+        - label: Unknown results will not be presented as available.
+          required: true
