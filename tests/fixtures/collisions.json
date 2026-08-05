@@ -1,0 +1,7 @@
+[
+  { "input": "TaskForge", "normalized": "taskforge", "variants": ["taskforge", "task-forge", "task_forge"] },
+  { "input": "task-forge", "normalized": "taskforge", "variants": ["taskforge", "task-forge", "task_forge"] },
+  { "input": "task_forge", "normalized": "taskforge", "variants": ["taskforge", "task-forge", "task_forge"] },
+  { "input": "Orbit Desk", "normalized": "orbitdesk", "variants": ["orbitdesk", "orbit-desk", "orbit_desk"] },
+  { "input": "CodePulse", "normalized": "codepulse", "variants": ["codepulse", "code-pulse", "code_pulse"] }
+]

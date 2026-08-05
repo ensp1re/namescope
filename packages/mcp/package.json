@@ -1,0 +1,24 @@
+{
+  "name": "@nametagged/mcp",
+  "version": "0.1.0",
+  "description": "Local stdio MCP server for Nametagged",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist/*.js", "dist/*.js.map", "dist/*.d.ts", "dist/*.d.ts.map", "LICENSE"],
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@nametagged/adapters": "0.1.0",
+    "@nametagged/core": "0.1.0",
+    "@nametagged/schemas": "0.1.0",
+    "zod": "^4.0.0"
+  }
+}

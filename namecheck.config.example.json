@@ -1,0 +1,16 @@
+{
+  "tlds": ["com", "dev", "io"],
+  "registries": ["npm", "pypi", "crates"],
+  "weights": {
+    "packages": 25,
+    "github": 20,
+    "domains": 15,
+    "quality": 20,
+    "search": 10,
+    "cli": 10
+  },
+  "excludedWords": [],
+  "timeoutMs": 8000,
+  "cacheTtlHours": 24,
+  "concurrency": 4
+}
