@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "tsBuildInfoFile": "../../node_modules/.cache/nametagged-cli.tsbuildinfo"
+    "tsBuildInfoFile": "../../node_modules/.cache/namescope-cli.tsbuildinfo"
   },
   "include": ["src/**/*.ts"],
   "references": [

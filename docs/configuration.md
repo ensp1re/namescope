@@ -12,4 +12,4 @@ CLI flags override file values:
 - `--refresh`
 - `--offline`
 
-Weights may be any non-negative values. Nametagged normalizes by their sum.
+Weights may be any non-negative values. NameScope normalizes by their sum.

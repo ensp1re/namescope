@@ -3,9 +3,9 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, it } from "node:test";
-import { checkDomains } from "@nametagged/adapters";
-import { JsonCache, NamingIntelligence, type AdapterSet } from "@nametagged/core";
-import { ConfigSchema } from "@nametagged/schemas";
+import { checkDomains } from "@namescope/adapters";
+import { JsonCache, NamingIntelligence, type AdapterSet } from "@namescope/core";
+import { ConfigSchema } from "@namescope/schemas";
 
 describe("offline mode", () => {
   it("never calls remote adapters", async () => {
@@ -42,7 +42,7 @@ describe("offline mode", () => {
 
 describe("JSON cache", () => {
   it("serializes concurrent atomic writes", async () => {
-    const directory = await mkdtemp(join(tmpdir(), "nametagged-cache-"));
+    const directory = await mkdtemp(join(tmpdir(), "namescope-cache-"));
     try {
       const cache = new JsonCache({ path: join(directory, "cache.json") });
       await Promise.all([

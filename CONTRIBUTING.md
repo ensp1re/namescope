@@ -1,6 +1,6 @@
 # Contributing
 
-Nametagged welcomes fixes, provider adapters, language data, tests, and documentation under the MIT license.
+NameScope welcomes fixes, provider adapters, language data, tests, and documentation under the MIT license.
 
 ## Setup
 

@@ -20,4 +20,4 @@ A reusable package or exported library surface was detected
 
 ## Maintained knowledge
 
-`@nametagged/schemas` exports contracts; `@nametagged/core` exports deterministic and orchestration APIs; `@nametagged/adapters` exports default providers; `@nametagged/mcp` exports server construction. Packages are ESM, strict TypeScript, and NodeNext. Public result changes must be validated by Zod and preserve versioned schema semantics.
+`@namescope/schemas` exports contracts; `@namescope/core` exports deterministic and orchestration APIs; `@namescope/adapters` exports default providers; `@namescope/mcp` exports server construction. Packages are ESM, strict TypeScript, and NodeNext. Public result changes must be validated by Zod and preserve versioned schema semantics.

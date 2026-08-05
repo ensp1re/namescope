@@ -1,7 +1,7 @@
 {
-  "name": "@nametagged/mcp",
+  "name": "@namescope/mcp",
   "version": "0.1.0",
-  "description": "Local stdio MCP server for Nametagged",
+  "description": "Local stdio MCP server for NameScope",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,9 +16,9 @@
   "publishConfig": { "access": "public" },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.0.0",
-    "@nametagged/adapters": "0.1.0",
-    "@nametagged/core": "0.1.0",
-    "@nametagged/schemas": "0.1.0",
+    "@namescope/adapters": "0.1.0",
+    "@namescope/core": "0.1.0",
+    "@namescope/schemas": "0.1.0",
     "zod": "^4.0.0"
   }
 }

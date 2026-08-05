@@ -34,13 +34,13 @@ describe("CLI parser", () => {
     const cliSource = fileURLToPath(new URL("../packages/cli/src/index.ts", import.meta.url));
     assert.equal(isExecutedDirectly(pathToFileURL(cliSource).href, cliSource), true);
     assert.equal(isExecutedDirectly(pathToFileURL(cliSource).href, undefined), false);
-    assert.equal(isExecutedDirectly(pathToFileURL(cliSource).href, join(tmpdir(), "nametagged-missing")), false);
+    assert.equal(isExecutedDirectly(pathToFileURL(cliSource).href, join(tmpdir(), "namescope-missing")), false);
   });
 
   it("recognizes direct execution through a package-manager symlink", { skip: process.platform === "win32" }, () => {
     const cliSource = fileURLToPath(new URL("../packages/cli/src/index.ts", import.meta.url));
-    const directory = mkdtempSync(join(tmpdir(), "nametagged-cli-"));
-    const symlink = join(directory, "nametagged");
+    const directory = mkdtempSync(join(tmpdir(), "namescope-cli-"));
+    const symlink = join(directory, "namescope");
 
     try {
       symlinkSync(cliSource, symlink);

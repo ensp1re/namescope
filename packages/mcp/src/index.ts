@@ -1,9 +1,9 @@
 import { McpServer } from "@modelcontextprotocol/server";
 import { StdioServerTransport } from "@modelcontextprotocol/server/stdio";
 import { z } from "zod";
-import { createDefaultAdapters } from "@nametagged/adapters";
-import { CompletedResultSchema } from "@nametagged/schemas";
-import { JsonCache, NamingIntelligence, explainScore, loadConfig } from "@nametagged/core";
+import { createDefaultAdapters } from "@namescope/adapters";
+import { CompletedResultSchema } from "@namescope/schemas";
+import { JsonCache, NamingIntelligence, explainScore, loadConfig } from "@namescope/core";
 
 export interface McpServerOptions {
   configFile?: string | undefined;
@@ -28,10 +28,10 @@ function response(value: unknown): { content: Array<{ type: "text"; text: string
   };
 }
 
-export async function createNametaggedMcpServer(options: McpServerOptions = {}): Promise<McpServer> {
+export async function createNameScopeMcpServer(options: McpServerOptions = {}): Promise<McpServer> {
   const config = await loadConfig(options.configFile ?? "namecheck.config.json");
   const intelligence = new NamingIntelligence(createDefaultAdapters(), config, new JsonCache());
-  const server = new McpServer({ name: "nametagged", version: "0.1.0" });
+  const server = new McpServer({ name: "namescope", version: "0.1.0" });
   const readOnly = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true };
 
   server.registerTool("generate_names", {
@@ -128,7 +128,7 @@ export async function createNametaggedMcpServer(options: McpServerOptions = {}):
 
   server.registerTool("explain_score", {
     title: "Explain score",
-    description: "Explain every score dimension and warning from a completed Nametagged result.",
+    description: "Explain every score dimension and warning from a completed NameScope result.",
     inputSchema: z.object({ completedResult: CompletedResultSchema }),
     annotations: { ...readOnly, openWorldHint: false },
   }, async ({ completedResult }) => response({ explanation: explainScore(completedResult) }));
@@ -137,6 +137,6 @@ export async function createNametaggedMcpServer(options: McpServerOptions = {}):
 }
 
 export async function runMcpServer(options: McpServerOptions = {}): Promise<void> {
-  const server = await createNametaggedMcpServer(options);
+  const server = await createNameScopeMcpServer(options);
   await server.connect(new StdioServerTransport());
 }

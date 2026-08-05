@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { InMemoryTransport, LATEST_PROTOCOL_VERSION, type JSONRPCMessage } from "@modelcontextprotocol/server";
-import { createNametaggedMcpServer, MCP_TOOL_NAMES } from "@nametagged/mcp";
+import { createNameScopeMcpServer, MCP_TOOL_NAMES } from "@namescope/mcp";
 
 describe("MCP server", () => {
   it("lists required tools through MCP transport without network access", async () => {
@@ -9,7 +9,7 @@ describe("MCP server", () => {
       "generate_names", "check_name", "rank_names", "check_domains", "check_packages",
       "check_github", "check_trademark", "explain_score",
     ]);
-    const server = await createNametaggedMcpServer({ configFile: "tests/fixtures/nonexistent.json" });
+    const server = await createNameScopeMcpServer({ configFile: "tests/fixtures/nonexistent.json" });
     const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
     await server.connect(serverTransport);
     await clientTransport.start();
@@ -26,7 +26,7 @@ describe("MCP server", () => {
     await request(1, "initialize", {
       protocolVersion: LATEST_PROTOCOL_VERSION,
       capabilities: {},
-      clientInfo: { name: "nametagged-test", version: "1.0.0" },
+      clientInfo: { name: "namescope-test", version: "1.0.0" },
     });
     await clientTransport.send({ jsonrpc: "2.0", method: "notifications/initialized" });
     const listed = await request(2, "tools/list", {});

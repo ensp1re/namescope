@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { generateNames, nameVariants, normalizeName } from "@nametagged/core";
+import { generateNames, nameVariants, normalizeName } from "@namescope/core";
 import fixtures from "./fixtures/collisions.json" with { type: "json" };
 
 describe("deterministic candidate generation", () => {

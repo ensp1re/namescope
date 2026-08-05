@@ -10,4 +10,4 @@ Use GitHub private vulnerability reporting when repository enables it. Otherwise
 
 ## Security boundaries
 
-Nametagged sends names only to providers selected by user. Offline mode must make no network requests. Tokens must never enter logs, cache, reports, tests, or errors. Provider output is untrusted data and must be validated or rendered as text.
+NameScope sends names only to providers selected by user. Offline mode must make no network requests. Tokens must never enter logs, cache, reports, tests, or errors. Provider output is untrusted data and must be validated or rendered as text.

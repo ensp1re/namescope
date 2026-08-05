@@ -44,4 +44,4 @@ Summarizes repository purpose, stacks, workspaces, and entry surfaces
 
 ## Purpose and boundaries
 
-Nametagged helps developers generate, check, compare, and select software-project names. Users enter through published `nametagged` CLI or local stdio MCP server. Core generation, scoring, cache, and orchestration are shared. No account, paid service, model, hosted backend, telemetry, or Docker installation is required. Results are evidence-based screening, never domain guarantees or legal clearance.
+NameScope helps developers generate, check, compare, and select software-project names. Users enter through published `namescope` CLI or local stdio MCP server. Core generation, scoring, cache, and orchestration are shared. No account, paid service, model, hosted backend, telemetry, or Docker installation is required. Results are evidence-based screening, never domain guarantees or legal clearance.

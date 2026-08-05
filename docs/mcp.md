@@ -1,13 +1,13 @@
 # MCP setup
 
-Nametagged uses local stdio transport from official MCP TypeScript SDK v2.
+NameScope uses local stdio transport from official MCP TypeScript SDK v2.
 
 ```json
 {
   "mcpServers": {
-    "nametagged": {
+    "namescope": {
       "command": "npx",
-      "args": ["-y", "nametagged", "mcp"]
+      "args": ["-y", "namescope", "mcp"]
     }
   }
 }
