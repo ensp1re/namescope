@@ -19,6 +19,32 @@ describe("deterministic candidate generation", () => {
     const result = generateNames("open source database migration", { count: 20, excludedWords: ["data"] });
     assert.ok(result.candidates.every((candidate) => !normalizeName(candidate.name).includes("data")));
   });
+
+  it("prioritizes naming intent over generic project modifiers", () => {
+    const result = generateNames(
+      "a local-first open-source project naming intelligence tool for developers",
+      { count: 6, styles: ["technical"] },
+    );
+
+    assert.deepEqual(
+      result.candidates.map((candidate) => candidate.name),
+      ["NameSignal", "NameInsight", "NameRadar", "NameSense", "NameScope", "TagSignal"],
+    );
+    assert.deepEqual(result.candidates[0]?.sourceWords, ["name", "signal"]);
+    assert.match(result.candidates[0]?.rationale ?? "", /“name” from “naming”.*“signal” from “intelligence”/);
+    assert.ok(result.candidates.every((candidate) => candidate.style === "technical"));
+  });
+
+  it("treats explicit keywords as distinctive concepts", () => {
+    const result = generateNames("a local open-source project", {
+      count: 3,
+      keywords: ["quartz"],
+      styles: ["minimal"],
+    });
+
+    assert.deepEqual(result.candidates.map((candidate) => candidate.name), ["QuartzLocal", "QuartzNative", "QuartzHome"]);
+    assert.ok(result.candidates.every((candidate) => candidate.sourceWords.includes("quartz")));
+  });
 });
 
 describe("normalization benchmark", () => {

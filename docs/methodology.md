@@ -1,5 +1,11 @@
 # Scoring methodology
 
+## Deterministic candidate generation
+
+The local generator separates distinctive product concepts from common modifiers. Explicit keywords and purpose-bearing words are considered first; generic descriptors such as `local`, `open`, `project`, and `developer` remain available as supporting context. Related terms from different distinctive concepts are paired before style vocabulary is introduced. For example, `naming intelligence` begins with combinations such as `NameSignal` instead of allowing an earlier modifier to produce `ByteLocal`.
+
+Generation is deterministic: the same description, keywords, exclusions, styles, and count produce the same ordered candidates. Every candidate includes the exact generated source words and a rationale that identifies either their originating description concepts or the style affix used.
+
 Default composite weights:
 
 - package uniqueness: 25%

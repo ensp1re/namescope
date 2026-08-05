@@ -2,7 +2,7 @@
   "schemaVersion": "aiviron-knowledge-manifest/v1alpha1",
   "generatedBy": "aiviron-knowledge-service/0.1.0",
   "generatedAt": "2026-08-05T19:27:50.030Z",
-  "updatedAt": "2026-08-05T20:38:12.447Z",
+  "updatedAt": "2026-08-05T21:03:04.077Z",
   "projectId": "prj_31fcd3a110648fe720b077da",
   "docsRoot": "docs/ai",
   "documents": [
@@ -44,7 +44,7 @@
         },
         {
           "path": "tests/generator.test.ts",
-          "digest": "sha256:d8811b49b37b61cba22c39c39165b15b8a76ea800549182e852b4a5ee88e3184"
+          "digest": "sha256:05871e5f6ac7cbf9837b1bdafa55fc32ae4f7ad23afc64b85df956ca7501367e"
         }
       ]
     },
@@ -90,7 +90,7 @@
         },
         {
           "path": "packages/core/src/index.ts",
-          "digest": "sha256:84c239a666fa765ec3021eabd1bb4764a4ed7357f38d9ca21e0687fd2996a39a"
+          "digest": "sha256:37080f4bfa62df22654b23177803359827f0260f924270428e54b1ffb4b5dc5b"
         },
         {
           "path": "packages/mcp/src/index.ts",
@@ -184,7 +184,7 @@
         },
         {
           "path": "docs/methodology.md",
-          "digest": "sha256:04f28289b16751ded8ec4077e3b89851a37335db2d713a9738cfe92a49c9bbb1"
+          "digest": "sha256:50746f5515a273281df8963cf0972f8364a720aa52cdb480a34182f69a981fe4"
         },
         {
           "path": "docs/stack-evaluation.md",
@@ -246,7 +246,7 @@
         },
         {
           "path": "tests/generator.test.ts",
-          "digest": "sha256:d8811b49b37b61cba22c39c39165b15b8a76ea800549182e852b4a5ee88e3184"
+          "digest": "sha256:05871e5f6ac7cbf9837b1bdafa55fc32ae4f7ad23afc64b85df956ca7501367e"
         },
         {
           "path": "tests/github.test.ts",
@@ -404,7 +404,7 @@
         },
         {
           "path": "packages/core/src/index.ts",
-          "digest": "sha256:84c239a666fa765ec3021eabd1bb4764a4ed7357f38d9ca21e0687fd2996a39a"
+          "digest": "sha256:37080f4bfa62df22654b23177803359827f0260f924270428e54b1ffb4b5dc5b"
         }
       ]
     },
@@ -468,7 +468,7 @@
         },
         {
           "path": "tests/generator.test.ts",
-          "digest": "sha256:d8811b49b37b61cba22c39c39165b15b8a76ea800549182e852b4a5ee88e3184"
+          "digest": "sha256:05871e5f6ac7cbf9837b1bdafa55fc32ae4f7ad23afc64b85df956ca7501367e"
         },
         {
           "path": "tests/github.test.ts",
