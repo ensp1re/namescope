@@ -2,7 +2,7 @@
   "schemaVersion": "aiviron-knowledge-manifest/v1alpha1",
   "generatedBy": "aiviron-knowledge-service/0.1.0",
   "generatedAt": "2026-08-05T19:27:50.030Z",
-  "updatedAt": "2026-08-05T19:59:10.996Z",
+  "updatedAt": "2026-08-05T20:06:54.311Z",
   "projectId": "prj_31fcd3a110648fe720b077da",
   "docsRoot": "docs/ai",
   "documents": [
@@ -82,11 +82,11 @@
         },
         {
           "path": "packages/adapters/src/index.ts",
-          "digest": "sha256:a921ebaabf2728f850167c48589d0a1a763a11ddccf5d666335c24ac20e0d657"
+          "digest": "sha256:5c7bd337f8d0f82773212674188a6fe57ca510f79d0a3e714d3c83314055e057"
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:ea39ce0f158df086a7f36a7011809ea7f4de7be2d146b99189d2989e124274f8"
+          "digest": "sha256:1ef9a512d434495ca2fc9e35321ff876bff7cda99f9f0bbd6180e168726676a4"
         },
         {
           "path": "packages/core/src/index.ts",
@@ -132,7 +132,7 @@
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:ea39ce0f158df086a7f36a7011809ea7f4de7be2d146b99189d2989e124274f8"
+          "digest": "sha256:1ef9a512d434495ca2fc9e35321ff876bff7cda99f9f0bbd6180e168726676a4"
         },
         {
           "path": "packages/cli/tsconfig.json",
@@ -192,7 +192,7 @@
         },
         {
           "path": "packages/adapters/src/index.ts",
-          "digest": "sha256:a921ebaabf2728f850167c48589d0a1a763a11ddccf5d666335c24ac20e0d657"
+          "digest": "sha256:5c7bd337f8d0f82773212674188a6fe57ca510f79d0a3e714d3c83314055e057"
         },
         {
           "path": "README.md",
@@ -238,7 +238,7 @@
         },
         {
           "path": "tests/cli.test.ts",
-          "digest": "sha256:0d24c1f5a015bea9eba1f3bb3850fe33adf180d7637d8e695eb5d7debbf0f52a"
+          "digest": "sha256:606b6f04a18c1238c5b92fc74683f311c076c1c708e6ffe3d30dec551be41523"
         },
         {
           "path": "tests/fixtures/collisions.json",
@@ -247,6 +247,10 @@
         {
           "path": "tests/generator.test.ts",
           "digest": "sha256:d8811b49b37b61cba22c39c39165b15b8a76ea800549182e852b4a5ee88e3184"
+        },
+        {
+          "path": "tests/github.test.ts",
+          "digest": "sha256:7050a1a5aa87b6d950a204a41594aa67ed1ac9c5f30d05386137db9430240795"
         },
         {
           "path": "tests/mcp.test.ts",
@@ -392,11 +396,11 @@
         },
         {
           "path": "packages/adapters/src/index.ts",
-          "digest": "sha256:a921ebaabf2728f850167c48589d0a1a763a11ddccf5d666335c24ac20e0d657"
+          "digest": "sha256:5c7bd337f8d0f82773212674188a6fe57ca510f79d0a3e714d3c83314055e057"
         },
         {
           "path": "packages/cli/src/index.ts",
-          "digest": "sha256:ea39ce0f158df086a7f36a7011809ea7f4de7be2d146b99189d2989e124274f8"
+          "digest": "sha256:1ef9a512d434495ca2fc9e35321ff876bff7cda99f9f0bbd6180e168726676a4"
         },
         {
           "path": "packages/core/src/index.ts",
@@ -456,7 +460,7 @@
       "sources": [
         {
           "path": "tests/cli.test.ts",
-          "digest": "sha256:0d24c1f5a015bea9eba1f3bb3850fe33adf180d7637d8e695eb5d7debbf0f52a"
+          "digest": "sha256:606b6f04a18c1238c5b92fc74683f311c076c1c708e6ffe3d30dec551be41523"
         },
         {
           "path": "tests/fixtures/collisions.json",
@@ -465,6 +469,10 @@
         {
           "path": "tests/generator.test.ts",
           "digest": "sha256:d8811b49b37b61cba22c39c39165b15b8a76ea800549182e852b4a5ee88e3184"
+        },
+        {
+          "path": "tests/github.test.ts",
+          "digest": "sha256:7050a1a5aa87b6d950a204a41594aa67ed1ac9c5f30d05386137db9430240795"
         },
         {
           "path": "tests/mcp.test.ts",

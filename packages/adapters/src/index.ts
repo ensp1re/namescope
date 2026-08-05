@@ -300,19 +300,29 @@ export async function checkGithub(name: string, context: CheckContext): Promise<
     const exact = items.filter((item) => normalizeName(item.name ?? "") === normalized);
     const popularSimilar = items.filter((item) => (item.stargazers_count ?? 0) >= 100 && normalizeName(item.name ?? "") !== normalized);
     const userExists = user.status >= 200 && user.status < 300;
+    const namespaceKnown = userExists || user.status === 404;
     const collision = exact.length > 0 || userExists;
-    const score = collision ? Math.max(5, 45 - exact.length * 10 - (userExists ? 10 : 0)) : popularSimilar.length ? 65 : 90;
+    const status = collision ? "collision" : namespaceKnown ? "no_exact_collision" : "unknown";
+    const score = collision ? Math.max(5, 45 - exact.length * 10 - (userExists ? 10 : 0)) : !namespaceKnown ? 50 : popularSimilar.length ? 65 : 90;
+    const namespaceSummary = userExists ? "is occupied" : namespaceKnown ? "was not found" : `lookup returned HTTP ${user.status}`;
     const evidenceItems = [
-      evidence("github", normalized, collision ? "collision" : "no_exact_collision", `Repository search returned ${body.total_count ?? items.length} result(s); ${exact.length} normalized exact match(es).`, collision ? "high" : "medium", `https://github.com/search?q=${encodeURIComponent(`${normalized} in:name`)}&type=repositories`),
+      evidence("github", normalized, exact.length ? "collision" : "no_exact_collision", `Repository search returned ${body.total_count ?? items.length} result(s); ${exact.length} normalized exact match(es).`, exact.length ? "high" : "medium", `https://github.com/search?q=${encodeURIComponent(`${normalized} in:name`)}&type=repositories`),
       evidence("github", normalized, userExists ? "collision" : user.status === 404 ? "no_exact_collision" : "unknown", userExists ? "GitHub user or organization namespace exists." : user.status === 404 ? "No exact user or organization namespace was returned." : `Namespace lookup returned HTTP ${user.status}.`, userExists || user.status === 404 ? "high" : "none", `https://github.com/${encodeURIComponent(normalized)}`),
       ...exact.slice(0, 5).map((item) => evidence("github", normalized, "collision", `${item.full_name ?? item.name} has ${item.stargazers_count ?? 0} star(s).`, "high", item.html_url)),
     ];
     return {
       provider: "github",
-      status: collision ? "collision" : "no_exact_collision",
+      status,
       score,
-      summary: collision ? `${exact.length} exact repository match(es) and ${userExists ? "an occupied" : "no"} account namespace.` : `No exact repository or account collision returned; ${popularSimilar.length} popular similar result(s).`,
-      warnings: ["GitHub search is rate-limited and cannot prove global availability."],
+      summary: collision
+        ? `${exact.length} exact repository match(es); account namespace ${namespaceSummary}.`
+        : namespaceKnown
+          ? `No exact repository or account collision returned; ${popularSimilar.length} popular similar result(s).`
+          : `No exact repository collision returned, but account namespace lookup returned HTTP ${user.status}; GitHub collision status is unknown.`,
+      warnings: [
+        "GitHub search is rate-limited and cannot prove global availability.",
+        ...(!namespaceKnown ? [`GitHub account namespace lookup returned HTTP ${user.status}; absence was not inferred.`] : []),
+      ],
       evidence: evidenceItems,
     };
   } catch (error) {

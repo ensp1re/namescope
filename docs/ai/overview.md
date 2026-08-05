@@ -24,7 +24,7 @@ Summarizes repository purpose, stacks, workspaces, and entry surfaces
 
 ## Repository profile
 
-- Languages: typescript (11)
+- Languages: typescript (12)
 - Workspaces: packages/*
 - Monorepo: yes
 - Tests detected: yes

@@ -12,6 +12,7 @@ Tests or test frameworks were detected
 - `tests/cli.test.ts`
 - `tests/fixtures/collisions.json`
 - `tests/generator.test.ts`
+- `tests/github.test.ts`
 - `tests/mcp.test.ts`
 - `tests/npm-validation.test.ts`
 - `tests/offline.test.ts`

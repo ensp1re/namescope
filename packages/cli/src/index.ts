@@ -50,6 +50,18 @@ function listFlag(args: ParsedArgs, name: string): string[] | undefined {
   return value?.split(",").map((item) => item.trim()).filter(Boolean);
 }
 
+export function parseNiceClassesFlag(args: ParsedArgs): number[] | undefined {
+  const raw = args.flags.get("--nice-classes");
+  if (raw === undefined) return undefined;
+  if (typeof raw !== "string") throw new Error("--nice-classes requires comma-separated integers from 1 to 45");
+  const tokens = raw.split(",").map((item) => item.trim());
+  const classes = tokens.map(Number);
+  if (tokens.some((item) => !item) || classes.some((item) => !Number.isInteger(item) || item < 1 || item > 45)) {
+    throw new Error("--nice-classes requires comma-separated integers from 1 to 45");
+  }
+  return [...new Set(classes)];
+}
+
 function numberFlag(args: ParsedArgs, name: string): number | undefined {
   const value = stringFlag(args, name);
   if (value === undefined) return undefined;
@@ -168,6 +180,7 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
   const tldsOverride = listFlag(args, "--tlds");
   const registriesOverride = listFlag(args, "--registries") ?? listFlag(args, "--ecosystems");
   const timeoutOverride = numberFlag(args, "--timeout");
+  const niceClasses = parseNiceClassesFlag(args);
   const config = await loadConfig(stringFlag(args, "--config") ?? "namecheck.config.json", {
     ...(tldsOverride ? { tlds: tldsOverride } : {}),
     ...(registriesOverride ? { registries: registriesOverride as Array<"npm" | "pypi" | "crates"> } : {}),
@@ -186,7 +199,7 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     ...(listFlag(args, "--tlds") ? { tlds: listFlag(args, "--tlds") } : {}),
     ...(listFlag(args, "--registries") ?? listFlag(args, "--ecosystems") ? { ecosystems: listFlag(args, "--registries") ?? listFlag(args, "--ecosystems") } : {}),
     ...(stringFlag(args, "--jurisdiction") ? { jurisdiction: stringFlag(args, "--jurisdiction") } : {}),
-    ...(listFlag(args, "--nice-classes") ? { niceClasses: listFlag(args, "--nice-classes")!.map(Number) } : {}),
+    ...(niceClasses ? { niceClasses } : {}),
   };
 
   switch (args.command) {
