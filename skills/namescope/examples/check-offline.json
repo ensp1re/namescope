@@ -1,0 +1,474 @@
+{
+  "schemaVersion": "namescope-result/v1",
+  "name": "taskforge",
+  "normalizedName": "taskforge",
+  "score": 64,
+  "verdict": "high conflict risk",
+  "dimensions": {
+    "packages": {
+      "score": 50,
+      "status": "0 favorable, 0 collision/registered, 3 unknown",
+      "weight": 25,
+      "evidence": [
+        {
+          "provider": "npm",
+          "query": "taskforge",
+          "status": "unknown",
+          "detail": "Offline mode prevented package-registry request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "pypi",
+          "query": "taskforge",
+          "status": "unknown",
+          "detail": "Offline mode prevented package-registry request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "crates",
+          "query": "taskforge",
+          "status": "unknown",
+          "detail": "Offline mode prevented package-registry request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    "github": {
+      "score": 50,
+      "status": "Offline mode prevented GitHub request.",
+      "weight": 20,
+      "evidence": [
+        {
+          "provider": "github",
+          "query": "taskforge",
+          "status": "unknown",
+          "detail": "Offline mode prevented GitHub request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    "domains": {
+      "score": 50,
+      "status": "0 favorable, 0 collision/registered, 8 unknown",
+      "weight": 15,
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.com",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "rdap",
+          "query": "taskforge.org",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "rdap",
+          "query": "taskforge.net",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "rdap",
+          "query": "taskforge.io",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "rdap",
+          "query": "taskforge.dev",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "rdap",
+          "query": "taskforge.app",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "rdap",
+          "query": "taskforge.ai",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        },
+        {
+          "provider": "rdap",
+          "query": "taskforge.co",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    "quality": {
+      "score": 94,
+      "status": "strong deterministic quality",
+      "weight": 20,
+      "evidence": []
+    },
+    "search": {
+      "score": 50,
+      "status": "optional web-search adapter not configured",
+      "weight": 10,
+      "evidence": []
+    },
+    "cli": {
+      "score": 100,
+      "status": "taskforge has no local PATH or common-command collision.",
+      "weight": 10,
+      "evidence": [
+        {
+          "provider": "cli",
+          "query": "taskforge",
+          "status": "no_exact_collision",
+          "detail": "No executable found in PATH and no reserved-list match.",
+          "checkedAt": "2026-09-21T11:43:02.970Z",
+          "confidence": "high"
+        }
+      ]
+    }
+  },
+  "qualitySignals": [
+    {
+      "id": "length",
+      "score": 100,
+      "weight": 18,
+      "explanation": "9 characters; 5–12 is easiest to remember and type."
+    },
+    {
+      "id": "word-count",
+      "score": 95,
+      "weight": 10,
+      "explanation": "1 lexical part(s)."
+    },
+    {
+      "id": "pronounceability",
+      "score": 90,
+      "weight": 16,
+      "explanation": "Vowel ratio 0.33 used as a documented pronunciation proxy."
+    },
+    {
+      "id": "repeated-letters",
+      "score": 100,
+      "weight": 8,
+      "explanation": "No triple-letter sequence."
+    },
+    {
+      "id": "punctuation",
+      "score": 100,
+      "weight": 10,
+      "explanation": "Works without punctuation."
+    },
+    {
+      "id": "numbers",
+      "score": 100,
+      "weight": 8,
+      "explanation": "No number dependence."
+    },
+    {
+      "id": "negative-language",
+      "score": 100,
+      "weight": 15,
+      "explanation": "No configured negative-language fragment found."
+    },
+    {
+      "id": "technical-relevance",
+      "score": 60,
+      "weight": 10,
+      "explanation": "No project description supplied; relevance remains neutral."
+    },
+    {
+      "id": "visual-ambiguity",
+      "score": 95,
+      "weight": 5,
+      "explanation": "No common ambiguous glyph sequence found."
+    }
+  ],
+  "providers": [
+    {
+      "provider": "rdap",
+      "status": "unknown",
+      "summary": "Offline mode prevented RDAP request.",
+      "warnings": [
+        "Offline mode prevented RDAP request."
+      ],
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.com",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "rdap",
+      "status": "unknown",
+      "summary": "Offline mode prevented RDAP request.",
+      "warnings": [
+        "Offline mode prevented RDAP request."
+      ],
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.org",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "rdap",
+      "status": "unknown",
+      "summary": "Offline mode prevented RDAP request.",
+      "warnings": [
+        "Offline mode prevented RDAP request."
+      ],
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.net",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "rdap",
+      "status": "unknown",
+      "summary": "Offline mode prevented RDAP request.",
+      "warnings": [
+        "Offline mode prevented RDAP request."
+      ],
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.io",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "rdap",
+      "status": "unknown",
+      "summary": "Offline mode prevented RDAP request.",
+      "warnings": [
+        "Offline mode prevented RDAP request."
+      ],
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.dev",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "rdap",
+      "status": "unknown",
+      "summary": "Offline mode prevented RDAP request.",
+      "warnings": [
+        "Offline mode prevented RDAP request."
+      ],
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.app",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "rdap",
+      "status": "unknown",
+      "summary": "Offline mode prevented RDAP request.",
+      "warnings": [
+        "Offline mode prevented RDAP request."
+      ],
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.ai",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "rdap",
+      "status": "unknown",
+      "summary": "Offline mode prevented RDAP request.",
+      "warnings": [
+        "Offline mode prevented RDAP request."
+      ],
+      "evidence": [
+        {
+          "provider": "rdap",
+          "query": "taskforge.co",
+          "status": "unknown",
+          "detail": "Offline mode prevented RDAP request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "npm",
+      "status": "unknown",
+      "summary": "Offline mode prevented package-registry request.",
+      "warnings": [
+        "Offline mode prevented package-registry request."
+      ],
+      "evidence": [
+        {
+          "provider": "npm",
+          "query": "taskforge",
+          "status": "unknown",
+          "detail": "Offline mode prevented package-registry request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "pypi",
+      "status": "unknown",
+      "summary": "Offline mode prevented package-registry request.",
+      "warnings": [
+        "Offline mode prevented package-registry request."
+      ],
+      "evidence": [
+        {
+          "provider": "pypi",
+          "query": "taskforge",
+          "status": "unknown",
+          "detail": "Offline mode prevented package-registry request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "crates",
+      "status": "unknown",
+      "summary": "Offline mode prevented package-registry request.",
+      "warnings": [
+        "Offline mode prevented package-registry request."
+      ],
+      "evidence": [
+        {
+          "provider": "crates",
+          "query": "taskforge",
+          "status": "unknown",
+          "detail": "Offline mode prevented package-registry request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "github",
+      "status": "unknown",
+      "summary": "Offline mode prevented GitHub request.",
+      "warnings": [
+        "Offline mode prevented GitHub request."
+      ],
+      "evidence": [
+        {
+          "provider": "github",
+          "query": "taskforge",
+          "status": "unknown",
+          "detail": "Offline mode prevented GitHub request.",
+          "checkedAt": "2026-09-21T11:43:02.966Z",
+          "confidence": "none"
+        }
+      ]
+    },
+    {
+      "provider": "cli",
+      "status": "no_exact_collision",
+      "score": 100,
+      "summary": "taskforge has no local PATH or common-command collision.",
+      "warnings": [
+        "Local command checks describe only this machine and built-in command list."
+      ],
+      "evidence": [
+        {
+          "provider": "cli",
+          "query": "taskforge",
+          "status": "no_exact_collision",
+          "detail": "No executable found in PATH and no reserved-list match.",
+          "checkedAt": "2026-09-21T11:43:02.970Z",
+          "confidence": "high"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "Offline mode prevented RDAP request.",
+    "Offline mode prevented package-registry request.",
+    "Offline mode prevented GitHub request.",
+    "Local command checks describe only this machine and built-in command list.",
+    "Domain availability can change; confirm with a registrar before purchase.",
+    "GitHub search cannot prove global namespace availability.",
+    "Trademark screening is preliminary information, not legal clearance."
+  ],
+  "unknownChecks": [
+    "rdap",
+    "npm",
+    "pypi",
+    "crates",
+    "github",
+    "social handles (not requested)",
+    "web search (adapter not configured)"
+  ],
+  "scoringWeights": {
+    "packages": 25,
+    "github": 20,
+    "domains": 15,
+    "quality": 20,
+    "search": 10,
+    "cli": 10
+  },
+  "explanation": "taskforge scores 64/100 (high conflict risk). Package uniqueness 50, GitHub uniqueness 50, domain options 50, name quality 94, search distinctiveness 50, and CLI usability 100. 14 check(s) remain unknown or unrequested.",
+  "checkedAt": "2026-09-21T11:43:02.970Z"
+}
