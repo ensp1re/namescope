@@ -1,0 +1,356 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "namescope-result/v1"
+    },
+    "name": {
+      "type": "string"
+    },
+    "normalizedName": {
+      "type": "string"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "verdict": {
+      "type": "string"
+    },
+    "dimensions": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "status": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0
+          },
+          "evidence": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "provider": {
+                  "type": "string"
+                },
+                "query": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "detail": {
+                  "type": "string"
+                },
+                "checkedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                },
+                "confidence": {
+                  "type": "string",
+                  "enum": [
+                    "high",
+                    "medium",
+                    "low",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "provider",
+                "query",
+                "status",
+                "detail",
+                "checkedAt",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "score",
+          "status",
+          "weight",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "qualitySignals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "weight": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "explanation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "score",
+          "weight",
+          "explanation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "registered",
+              "no_exact_collision",
+              "collision",
+              "likely_available",
+              "likely_taken",
+              "invalid",
+              "unknown",
+              "unsupported",
+              "error",
+              "manual_verification_required"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "provider": {
+                  "type": "string"
+                },
+                "query": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "detail": {
+                  "type": "string"
+                },
+                "checkedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                },
+                "confidence": {
+                  "type": "string",
+                  "enum": [
+                    "high",
+                    "medium",
+                    "low",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "provider",
+                "query",
+                "status",
+                "detail",
+                "checkedAt",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "warnings": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "provider",
+          "status",
+          "summary",
+          "evidence",
+          "warnings"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "trademark": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "no_obvious_exact_conflict_found",
+            "potential_conflict_found",
+            "manual_review_required",
+            "insufficient_data"
+          ]
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "disclaimer": {
+          "type": "string"
+        },
+        "officialSearchLinks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "provider": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string",
+                "format": "uri"
+              },
+              "detail": {
+                "type": "string"
+              },
+              "checkedAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low",
+                  "none"
+                ]
+              }
+            },
+            "required": [
+              "provider",
+              "query",
+              "status",
+              "detail",
+              "checkedAt",
+              "confidence"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "status",
+        "blocking",
+        "disclaimer",
+        "officialSearchLinks",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unknownChecks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scoringWeights": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "explanation": {
+      "type": "string"
+    },
+    "checkedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "name",
+    "normalizedName",
+    "score",
+    "verdict",
+    "dimensions",
+    "qualitySignals",
+    "providers",
+    "warnings",
+    "unknownChecks",
+    "scoringWeights",
+    "explanation",
+    "checkedAt"
+  ],
+  "additionalProperties": false
+}

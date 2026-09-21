@@ -142,6 +142,16 @@ NameScope exposes the same engine through a local MCP stdio server:
 
 Available tools are `generate_names`, `check_name`, `rank_names`, `check_domains`, `check_packages`, `check_github`, `check_trademark`, and `explain_score`. Read the [MCP guide](docs/mcp.md) for details.
 
+## For agents
+
+NameScope ships an agent skill so an agent runs the checks instead of guessing whether a name is taken.
+
+```bash
+npx skills add ensp1re/namescope --skill namescope --yes --agent claude-code
+```
+
+Cursor, Codex, OpenCode, GitHub Copilot, Gemini CLI, Grok, and Windsurf use the same command with their own `--agent` ID. The skill is [skills/namescope/SKILL.md](skills/namescope/SKILL.md); its result schema and examples are checked by the test suite.
+
 ## Development
 
 ```bash
